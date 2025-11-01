@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- this is the title of the page -->
+    <title>Projects</title>
+
+    <!-- the css styles for the page are defined here -->
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- internal style if needed -->
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- the content of the page goes here -->
+
+    <!-- Top navigation buttons -->
+    <div id="top-bar"></div>
+
+    <!-- log and menu button -->
+    <div id="menu"></div>
+
+    <!-- main content goes inside a layout component -->
+    <div class="layout">
+
+        <div id="projects_comingsoon"></div>
+
+    </div>
+
+    <!-- include the footer -->
+    <div id="footer"></div>
+
+    
+    <!-- some JavaScript -->
+     <!-- this is a Markdown parser in JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Load footer content dynamically
+        fetch("../components/footer/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+
+                // Inject footer.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/footer/footer.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Footer load error:", err));
+        // Load menu & logo-btn content dynamically
+        const liMapping = {
+            home: { text: "Home", href: "../index.html" }, // this to  be changed according to each page
+            confsWorkshops: { text: "Conferences & Workshops", href: "./confsWorkshops.html" },
+            aboutme: { text: "About Me", href: "./aboutme.html" },
+            projects: { text: "Projects", href: "./projects.html" },
+            blogs: { text: "Blogs", href: "./blogs.html" },
+            contactMe: { text: "Contact Me", href: "./contactMe.html" }
+        };
+
+        fetch("../components/menu/menu.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("menu").innerHTML = html;
+
+                // Inject menu.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/menu/menu.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "../components/menu/menu.js";
+                document.body.appendChild(script);
+
+                // Update <a> links based on liMapping
+                document.querySelectorAll("#menu a").forEach(link => {
+                    const key = link.dataset.key;
+
+                    if (liMapping[key]) {
+                        // ✅ Update existing link
+                        link.textContent = liMapping[key].text;
+                        link.href = liMapping[key].href;
+                    } else {
+                        // 🚫 Remove links not defined in the current page mapping
+                        link.closest("li").remove();
+                    }
+                });
+
+                // ✅ (Optional) Add "Home" if current page defines it but HTML doesn't have it
+                if (!document.querySelector('#menu a[data-key="home"]') && liMapping.home) {
+                    const ul = document.querySelector("#menu ul");
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.dataset.key = "home";
+                    a.textContent = liMapping.home.text;
+                    a.href = liMapping.home.href;
+                    li.appendChild(a);
+                    ul.insertBefore(li, ul.firstChild); // Add Home at the top
+                }
+            })
+            .catch(err => console.error("Menu load error:", err));
+
+        // Load top-bar content dynamically, with the btn mapping according to the current page:
+        const btnMapping = {
+            about: { text: "About Me", href: "./aboutme.html" },
+            more: { text: "More", href: "./dashboard.html" },
+            contact: { text: "Get in Touch", href: "./contactMe.html" }
+        };
+
+        fetch("../components/topbar/topbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("top-bar").innerHTML = html;
+
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/topbar/topbar.css";
+                document.head.appendChild(link);
+
+                const container = document.getElementById("top-bar");
+                container.querySelectorAll("button").forEach(btn => {
+                    const key = btn.dataset.key;
+                    if (btnMapping[key]) {
+                        btn.textContent = btnMapping[key].text;
+                        btn.onclick = () => (window.location.href = btnMapping[key].href);
+                    }
+                });
+            })
+            .catch(err => console.error("Topbar navigation tools load error:", err));
+
+        // Load coming soon section
+        fetch("../components/comingsoon/comingsoon.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("projects_comingsoon").innerHTML = html;
+
+                // Inject comingsoon.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/comingsoon/comingsoon.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Coming-soon section load error:", err));        
+
+        // add event listeners for previews page if needed
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('lastPage', window.location.pathname);
+        });
+    </script>
+</body>
+
+</html>

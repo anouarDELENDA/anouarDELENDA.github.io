@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- this is the title of the page -->
+    <title>Dashboard</title>
+
+    <!-- the css styles for the page are defined here -->
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- internal style if needed -->
+    <style>
+        /* quote */
+        .quote-box {
+            margin-top: 1vh;
+            padding: 2vh 3vw;
+            background-color: #f9f9ff;
+            border-left: 4px solid #007bff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 769px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quote-text {
+            font-size: clamp(16px, 1.5vw, 22px);
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1vh;
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .quote-attribution {
+            font-size: clamp(10px, 1vw, 16px);
+            color: #555;
+            text-align: right;
+        }
+
+        .quote-attribution a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .quote-attribution a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        /*dashboard*/
+        #slider {
+            opacity: 0.85;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            max-width: 769px;      
+            width: 90%;
+            height: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            aspect-ratio: 16 / 9; /* keeps height proportional */    
+        }
+        #slider img {
+          width: 100%;
+          height: 100%; /* fills container height */
+          object-fit: cover; /* crops instead of distorting */
+          display: block;
+          opacity: 1;
+          transition: opacity 0.05s ease;
+        }
+
+        #prevBtn, #nextBtn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 45px;              /* equal width */
+          height: 45px;             /* equal height */
+          background: rgba(0,0,0,0.5);
+          border: none;
+          color: white;
+          cursor: pointer;
+          border-radius: 50%;       /* makes it a perfect circle */
+          font-size: 1.5rem;
+          display: flex;            /* center arrow inside */
+          align-items: center;
+          justify-content: center;
+          transition: background 0.3s ease;
+          cursor:pointer;
+        }
+
+        #prevBtn:hover, #nextBtn:hover {
+          background: rgba(0,0,0,0.7);
+        }
+
+        #prevBtn {
+          left: 10px;
+        }
+
+        #nextBtn {
+          right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- the content of the page goes here -->
+
+    <!-- Top navigation buttons -->
+    <div id="top-bar"></div>
+
+    <!-- log and menu button -->
+    <div id="menu"></div>
+
+    <!-- main content goes inside a layout component -->
+    <div class="layout">
+
+        <!-- quote -->
+        <div class="quote-box">
+            <p class="quote-text">
+                “Today we know less than 1% of known compounds in the world; less than 1% of the materials properties.”
+            </p>
+            <p class="quote-attribution">
+                </br>
+                </br>
+                — <a href="https://en.wikipedia.org/wiki/Gerbrand_Ceder" target="_blank" title="wikipedia bibliography">Gerbrand Ceder</a>, from
+                <a href="https://www.youtube.com/watch?v=OE38aVAgOPM" target="_blank"  title="See 2:10 min">The World Economic Forum (2014,
+                    Davos)</a>
+            </p>
+        </div>
+
+        <!-- SLIDER SECTION -->
+        <section
+            style="max-width: 769px; margin: 3vh auto 5vh auto; text-align: center; font-family: Arial, sans-serif; padding: 0 1rem;">
+
+            <div id="slider">
+                <!--  style="position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);"> -->
+                <a id="slide-link" href="blogs.html" style="text-decoration: none; color: inherit;">
+                    <img id="slide-image" src="../assets/images/projects/projects_penpopt.png" alt="Slide">
+                    <img id="next-image" src="" alt="Next Slide" style="opacity:0;">
+                </a>
+                <button id="prevBtn"><</button>
+                <button id="nextBtn">></button>
+            </div>
+
+            <p id="caption" style="margin-top: 12px; font-size: 1.15rem; color: #333; font-weight: 500;">Projects
+                Section</p>
+
+        </section>
+
+    </div>
+
+    <!-- include the footer -->
+    <div id="footer"></div>
+
+
+    <!-- some JavaScript -->
+    <!-- this is a Markdown parser in JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Load footer content dynamically
+        fetch("../components/footer/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+
+                // Inject footer.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/footer/footer.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Footer load error:", err));
+        // Load menu & logo-btn content dynamically
+        const liMapping = {
+            publications: { text: "Publications", href: "./publications.html" },
+            confsWorkshops: { text: "Conferences & Workshops", href: "./confsWorkshops.html" },
+            aboutme: { text: "About Me", href: "./aboutme.html" },
+            projects: { text: "Projects", href: "./projects.html" },
+            blogs: { text: "Blogs", href: "./blogs.html" },
+            contactMe: { text: "Contact Me", href: "./contactMe.html" }
+        };
+
+        fetch("../components/menu/menu.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("menu").innerHTML = html;
+
+                // Inject menu.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/menu/menu.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "../components/menu/menu.js";
+                document.body.appendChild(script);
+
+                // Update <a> links based on liMapping
+                document.querySelectorAll("#menu a").forEach(link => {
+                    const key = link.dataset.key;
+
+                    if (liMapping[key]) {
+                        // ✅ Update existing link
+                        link.textContent = liMapping[key].text;
+                        link.href = liMapping[key].href;
+                    } else {
+                        // 🚫 Remove links not defined in the current page mapping
+                        link.closest("li").remove();
+                    }
+                });
+
+                // ✅ (Optional) Add "Home" if current page defines it but HTML doesn't have it
+                if (!document.querySelector('#menu a[data-key="home"]') && liMapping.home) {
+                    const ul = document.querySelector("#menu ul");
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.dataset.key = "home";
+                    a.textContent = liMapping.home.text;
+                    a.href = liMapping.home.href;
+                    li.appendChild(a);
+                    ul.insertBefore(li, ul.firstChild); // Add Home at the top
+                }
+            })
+            .catch(err => console.error("Menu load error:", err));
+
+        // Load top-bar content dynamically, with the btn mapping according to the current page:
+        const btnMapping = {
+            about: { text: "About Me", href: "./aboutme.html" },
+            more: { text: "Home", href: "../index.html" },
+            contact: { text: "Get in Touch", href: "./contactMe.html" }
+        };
+
+        fetch("../components/topbar/topbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("top-bar").innerHTML = html;
+
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/topbar/topbar.css";
+                document.head.appendChild(link);
+
+                const container = document.getElementById("top-bar");
+                container.querySelectorAll("button").forEach(btn => {
+                    const key = btn.dataset.key;
+                    if (btnMapping[key]) {
+                        btn.textContent = btnMapping[key].text;
+                        btn.onclick = () => (window.location.href = btnMapping[key].href);
+                    }
+                });
+            })
+            .catch(err => console.error("Topbar navigation tools load error:", err));
+
+        // Load coming soon section
+        fetch("../components/comingsoon/comingsoon.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("publications_comingsoon").innerHTML = html;
+
+                // Inject comingsoon.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/comingsoon/comingsoon.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Coming-soon section load error:", err));
+
+        // Slider logic
+        const slides = [
+            { src: "../assets/images/projects/projects_penpopt.png", caption: "Projects Section", link: "./projects.html" },
+            { src: "../assets/images/Confs_Workshops/conf_workshops_penpopt.png", caption: "Conferences & Workshops Section", link: "./confsworkshops.html" },
+            { src: "../assets/images/Blogs/Blog_penpopt.jpg", caption: "Blogs Section", link: "./blogs.html" }
+        ];
+
+        let currentIndex = 0;
+        const image = document.getElementById('slide-image');
+        const caption = document.getElementById('caption');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideLink = document.getElementById('slide-link');
+
+        function showSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            image.style.opacity = 0; // start fade out
+
+            const imgPreload = new Image();
+            imgPreload.src = slides[index].src;
+
+            imgPreload.onload = () => {
+                setTimeout(() => {
+                    image.src = slides[index].src;
+                    caption.textContent = slides[index].caption;
+                    slideLink.href = slides[index].link; // updates link correctly
+                    image.style.opacity = 1;
+                    currentIndex = index;
+                }, 10);
+            };
+        }
+
+        prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+        // show first slide on load
+        showSlide(currentIndex);
+
+        // add event listeners for previews page if needed
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('lastPage', window.location.pathname);
+        });
+    </script>
+</body>
+
+</html>

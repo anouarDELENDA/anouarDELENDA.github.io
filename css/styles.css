@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f6f8fd;
+  display: flex;
+  flex-direction: column;
+}
+/* layout styling: 
+a component that contain the majority of the page contents,
+ to ease the future modifications */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+  padding-top: 8vh;
+  margin: 5vh 5vw 5vh 10vw; /*<top> <right> <bottom> <left>;*/
+  font-family: Arial, sans-serif;
+  align-items: center; /* horizontal only */
+  overflow: visible;
+  /*overflow: auto;*/
+}
+/* center child inside layout container */
+.layout > * {
+  text-align: center;
+}
+#footer {
+  margin-top: auto; /* pushes footer to bottom */
+}
+
+/* blinking type */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+/* typing effect */
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  animation: typing 3s steps(24, end), blink 0.75s step-end infinite;
+  display: inline-block;
+  width: 24ch; /* fixes cropping issue */
+}
+
+/* When menu is open on small/large screens, fade all layout and it's 
+childs elements */
+.menu-open .layout > *:not(.top-bar) {
+  opacity: 0.2;
+  pointer-events: none;
+}

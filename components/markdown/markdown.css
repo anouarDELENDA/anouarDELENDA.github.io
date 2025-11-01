@@ -1,0 +1,35 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 150vh;
+  padding: 0;
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+  margin: 5vh 5vw 0 10vw; /*/*<top> <right> <bottom> <left>;*/
+  font-family: Arial, sans-serif;
+  align-items: center; /* horizontal only */
+  overflow: auto;
+}
+.layout img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.layout p {
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+.layout h1,
+.layout h2,
+.layout h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.layout sup {
+  vertical-align: super;
+  font-size: smaller;
+}

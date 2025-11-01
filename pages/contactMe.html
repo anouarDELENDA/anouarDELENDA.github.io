@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- this is the title of the page -->
+    <title>Get in Touch</title>
+
+    <!-- the css styles for the page are defined here -->
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- internal style if needed -->
+    <style>
+        .markdown-container {
+            font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 1rem;
+            padding-bottom: 10vh;
+        }
+
+        .markdown-container h1,
+        .markdown-container h2,
+        .markdown-container h3 {
+            font-weight: 600;
+            margin-top: 1.5em;
+            text-align: center;
+            margin: auto;
+            display: block;
+        }
+
+        .markdown-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.5rem auto;
+        }
+
+        .markdown-container table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .markdown-container th,
+        .markdown-container td {
+            padding: 0.5rem;
+            text-align: left;
+            margin-right: 0%;
+        }
+
+        /* Container for all details */
+        .markdown-container details {
+            text-align: left;
+            /* Align text to the left */
+            margin-left: 0;
+            /* Remove extra indentation */
+            padding-left: 0;
+            /* Remove padding */
+            border-left: 2px solid #eee;
+            /* Optional: nice visual cue */
+            padding: 0.5rem 1rem;
+            /* Add some internal padding */
+            margin-bottom: 1rem;
+            /* Space between toggle sections */
+        }
+
+        .markdown-container details[open] {
+            max-height: 300px;
+            /* limit height when expanded */
+            overflow: auto;
+            /* scroll if content exceeds max-height */
+            padding: 0.5rem 1rem;
+            border-left: 2px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .markdown-container details li {
+            align-items: left;
+        }
+
+        /*Contact form css*/
+        .contact-form {
+            background: #2d2d2d;
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%
+        }
+
+        .contact-form input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 0;
+            background: #1c1c1c;
+            color: #fff
+        }
+
+        /* textarea should be the only scrolling area inside the page */
+        .contact-form textarea {
+            border-radius: 8px;
+            border: 0;
+            background: #1c1c1c;
+            color: #fff;
+            padding: 12px;
+            resize: both;
+            max-width: 100%;
+            max-height: 48vh;
+            min-height: 200px;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            border-radius: 8px;
+            border: 0;
+            background: #4CAF50;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <!-- the content of the page goes here -->
+
+    <!-- Top navigation buttons -->
+    <div id="top-bar"></div>
+
+    <!-- log and menu button -->
+    <div id="menu"></div>
+
+    <!-- main content goes inside a layout component -->
+    <div class="layout">
+
+        <div id="contact_me_container" class="markdown-container">
+            <table>
+                <tr>
+                    <td
+                        style="width: 100%; vertical-align: top; position: relative; margin: 0%; padding-left: 0%; padding-right: 5vw; padding-top: 0%;">
+                        <h2>👋 Hello there!</h2>
+                        <p>I'd love to hear from you — feel free to reach out</p>
+                        <form class="contact-form" action="https://formsubmit.co/74c0e310ad271bb48b6f83c4d91e73da"
+                            method="POST">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="name" placeholder="First name" required></br>
+                            <input type="email" name="email" placeholder="@mail" required></br>
+                            <textarea name="message" placeholder="Type your message ... " required></textarea></br>
+                            <button type="submit">Send</button></br>
+                            <input type="hidden" name="_template" value="box">
+                        </form>
+                    </td>
+
+                    <td style="width: 20%; position: relative;padding-right: 10vw; padding-left: 0%; margin: 0%;">
+                        <div
+                            style="position: fixed; top: 25%; padding: 0px 0px; border: 1px solid #f6f8fdff; border-radius: 10px; z-index: 1000;">
+                            <center><img src="../assets/images/profile_pictures/profile-pic.png" alt="Profile Picture"
+                                    title="It's just me 🤣, am I that handsome 😘 ?" style="position: relative;        
+                width: clamp(100px, 40vw, 200px);
+                height: clamp(100px, 40vw, 200px);
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                top: 5%;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                background-color: #fff;
+                line-height: 0;"></center>
+                            <h2>Anouar Akacha Delenda</h2>
+                            <details>
+                                <summary><b>Current Affiliation</a></b></summary>
+                                🏛️ PhD student @ <a href="https://www.cnrs-imn.fr/"
+                                    style="text-decoration:none; color:inherit">Institut des Matériaux de Nantes Jean
+                                    Rouxe,
+                                    Nantes, France.</a></br>
+                                👥 Research team: <a
+                                    href="https://www.cnrs-imn.fr/index.php/recherche-equipes-et-travaux/physique-des-materiaux-et-nanostructures-equipe-pmn.html"
+                                    style="text-decoration:none; color:inherit">Physique des Matériaux et
+                                    nanostructures</a></br>
+                                <div class="emails">
+                                    <p><b>E-mails:</b></p>
+                                    <ul>
+                                        <li>anouar-akacha.delenda@cnrs-imn.fr</li>
+                                        <li>anouar-akacha.delenda@etu.univ-nantes.fr</li>
+                                        <li>delenda.akacha@gmail.com</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <!--Thank you message -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <!-- include the footer -->
+    <div id="footer"></div>
+
+
+    <!-- some JavaScript -->
+    <!-- this is a Markdown parser in JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+
+        // Load footer content dynamically
+        fetch("../components/footer/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+
+                // Inject footer.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/footer/footer.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Footer load error:", err));
+
+        // Load menu & logo-btn content dynamically
+        const liMapping = {
+            publications: { text: "Publications", href: "./publications.html" }, // this to  be changed according to each page
+            confsWorkshops: { text: "Conferences & Workshops", href: "./confsWorkshops.html" },
+            home: { text: "Home", href: "../index.html" },
+            projects: { text: "Projects", href: "./projects.html" },
+            blogs: { text: "Blogs", href: "./blogs.html" },
+            contactMe: { text: "Contact Me", href: "./contactMe.html" }
+        };
+
+        fetch("../components/menu/menu.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("menu").innerHTML = html;
+
+                // Inject menu.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/menu/menu.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "../components/menu/menu.js";
+                document.body.appendChild(script);
+
+                // Update <a> links based on liMapping
+                document.querySelectorAll("#menu a").forEach(link => {
+                    const key = link.dataset.key;
+
+                    if (liMapping[key]) {
+                        // ✅ Update existing link
+                        link.textContent = liMapping[key].text;
+                        link.href = liMapping[key].href;
+                    } else {
+                        // 🚫 Remove links not defined in the current page mapping
+                        link.closest("li").remove();
+                    }
+                });
+
+                // ✅ (Optional) Add "Home" if current page defines it but HTML doesn't have it
+                if (!document.querySelector('#menu a[data-key="home"]') && liMapping.home) {
+                    const ul = document.querySelector("#menu ul");
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.dataset.key = "home";
+                    a.textContent = liMapping.home.text;
+                    a.href = liMapping.home.href;
+                    li.appendChild(a);
+                    ul.insertBefore(li, ul.firstChild); // Add Home at the top
+                }
+            })
+            .catch(err => console.error("Menu load error:", err));
+
+        // Load top-bar content dynamically, with the btn mapping according to the current page:
+        const btnMapping = {
+            about: { text: "Home", href: "../index.html" },
+            more: { text: "More", href: "./dashboard.html" },
+            contact: { text: "About Me", href: "./aboutme.html" }
+        };
+
+        fetch("../components/topbar/topbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("top-bar").innerHTML = html;
+
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/topbar/topbar.css";
+                document.head.appendChild(link);
+
+                const container = document.getElementById("top-bar");
+                container.querySelectorAll("button").forEach(btn => {
+                    const key = btn.dataset.key;
+                    if (btnMapping[key]) {
+                        btn.textContent = btnMapping[key].text;
+                        btn.onclick = () => (window.location.href = btnMapping[key].href);
+                    }
+                });
+            })
+            .catch(err => console.error("Topbar navigation tools load error:", err));
+
+        //load thank you message component
+        fetch("../components/thankyoumsg/msg.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("popupOverlay").innerHTML = html;
+
+                // Inject thankyoumsg.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../components/thankyoumsg/msg.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "../components/thankyoumsg/msg.js";
+                document.body.appendChild(script);
+            })
+            .catch(err => console.error("Thank you message load error:", err));
+
+        // add event listeners for previews page if needed
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('lastPage', window.location.pathname);
+        });
+    </script>
+</body>
+
+</html>
