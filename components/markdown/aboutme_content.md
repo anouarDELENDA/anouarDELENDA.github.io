@@ -150,8 +150,7 @@
 </td>
 <td>
 
-**From September 2022 to June 2023**
-
+**From 2019 to 2021 (Bachelors + Graduate/Master)**
 </td>
 </table>
 
@@ -403,13 +402,13 @@ characterize the ultrashort pulses.
 
 ## <a id="skills"></a>🎯 Skills
 
-**Programming LanguageProgramming Language**
+**Programming Language**
 
     .
     ├── 🐍 Python/
     └── >_ Bash/
 
-**📈 Data AnalysisData Analysis**
+**📈 Data Analysiss**
 
     .
     ├── pandas/
@@ -466,7 +465,7 @@ characterize the ultrashort pulses.
 - [Model Selection for Atomization EnergyPrediction](https://www.kaggle.com/code/delendaanouarakacha/model-selection-for-atomization-energy-prediction)
 - [Ultrafast Ptychography](https://github.com/anouarDELENDA/Ultrafast-Ptycho)
 - [Linear tetrahedron method for electronicdensity calculations](https://github.com/anouarDELENDA/Density_Of_State_LTM)
-- [LearnPlatform COVID-19 Impact on Digital Learning]("https://www.kaggle.com/code/delendaanouarakacha/learnplatform-covid-19-impact-on-digital-learning")
+- [LearnPlatform COVID-19 Impact on Digital Learning](https://www.kaggle.com/code/delendaanouarakacha/learnplatform-covid-19-impact-on-digital-learning)
 
 </td>
 
