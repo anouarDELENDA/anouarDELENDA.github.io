@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- this is the title of the page -->
+    <title>Home</title>
+
+    <!-- the css styles for the page are defined here -->
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- internal style if needed -->
+    <style>
+        .description-holder {
+            position: absolute;
+            top: 20%;
+            left: 18vw;
+            transform: translateY(50%);
+            width: clamp(450px, 20vw, 500px);
+            height: auto;
+            /* allow content to grow */
+            border-radius: none;
+            overflow: visible;
+            /* allow typing animation overflow */
+            background-color: none;
+        }
+
+        .description-content {
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+            /*transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;*/
+            margin-left: 0;            
+            /* push to left */
+        }
+
+        /*next btn*/
+        .next-button {
+            margin-top: 1.5vh;
+            padding: clamp(0.5vh, 1vh, 1.5vh) clamp(1vw, 2vw, 3vw);
+            /*border: none;*/
+            border-radius: 40px;
+            background-color: #007bff;
+            color: white;
+            font-size: clamp(12px, 1.2vw, 16px);
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out, transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            /* add to center the text inside <a> */
+            text-decoration: none;
+        }
+
+        .next-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Profile picture */
+        .circular-image-holder {
+            position: absolute;
+            top: 50%;
+            right: 18vw;
+            transform: translateY(-50%);
+            width: clamp(120px, 20vw, 400px);
+            height: clamp(120px, 20vw, 400px);
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            line-height: 0;
+            /* Remove any line-height affecting image */
+        }
+
+        .circular-image-holder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .circular-image-holder img:hover {
+            transform: scale(1.13);
+        }
+
+        /*screen scalling issue*/
+        @media (max-width: 1114px) {
+            .circular-image-holder {
+                position: relative !important;
+                top: 10vh !important;
+                right: auto !important;
+                margin-bottom: 0 ! important;
+                margin: 0 auto 1vh auto;
+                width: clamp(120px, 40vw, 200px);
+                height: clamp(120px, 40vw, 200px);
+            }
+
+            .description-holder {
+                position: relative !important;
+                top: 0vh !important;
+                left: auto !important;
+                width: 90vw;
+                max-width: 400px;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- the content of the page goes here -->
+
+    <!-- Top navigation buttons -->
+    <div id="top-bar"></div>
+
+    <!-- log and menu button -->
+    <div id="menu"></div>
+
+    <!-- main content goes inside a layout component -->
+    <div class="layout">
+        <!-- Profile picture on the right -->
+        <div class="circular-image-holder">
+            <img src="./assets/images/profile_pictures/profile-pic.png" alt="Profile Picture">
+        </div>
+        <!-- Home description -->
+        <div class="description-holder">
+            <!-- Description text -->
+            <div class="description-content">
+                <h2 class="typing-effect" style="font-size: clamp(18px, 2vw, 32px); margin-bottom: 0.5vh;">Anouar Akacha
+                    DELENDA</h2>
+                <p style="font-size: clamp(14px, 1.2vw, 18px); margin-bottom: 1vh; color: #555;">Phd student</p>
+                <p style="font-size: clamp(12px, 1vw, 16px); line-height: 1.5; color: #444; text-align: justify;">
+                    Currently pursuing a PhD in atomistic modelling at Nantes university, Institut des Matériaux Jean
+                    Rouxel (IMN).
+                    I am a part of Physique des Matériaux et Nanostructures(PMN) team, where I focus on studying the
+                    properties of layered materials such as graphite.
+                    More specifically, my research involves investigating the linear extended defects such as
+                    dislocations. Initially, I aim to understand screw dislocations and
+                    how mechanical properties are correlated by their presence.
+                </p>
+            </div>
+            <!--<button class="next-button">Next &gt;&gt;</button>-->
+            <a href="./pages/dashboard.html" class="next-button">Next &gt;&gt;</a>
+        </div>
+
+    </div>
+
+    <!-- include the footer -->
+    <div id="footer"></div>
+
+    <!-- some JavaScript -->
+    <script>
+        // Load footer content dynamically
+        fetch("./components/footer/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+
+                // Inject footer.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "./components/footer/footer.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Footer load error:", err));
+        // Load menu & logo-btn content dynamically
+        const liMapping = {
+            confsWorkshops: { text: "Conferences & Workshops", href: "./pages/confsWorkshops.html" },
+            aboutme: { text: "About Me", href: "./pages/aboutme.html" },
+            projects: { text: "Projects", href: "./pages/projects.html" },
+            blogs: { text: "Blogs", href: "./pages/blogs.html" },
+            contactMe: { text: "Contact Me", href: "./pages/contactMe.html" },
+            publications: { text: "Publications", href: "./pages/publications.html" },
+        };
+
+        fetch("./components/menu/menu.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("menu").innerHTML = html;
+
+                // Inject menu.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "./components/menu/menu.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "./components/menu/menu.js";
+                document.body.appendChild(script);
+
+                // Update buttons using btnMapping
+                // Update <a> links based on liMapping
+                document.querySelectorAll("#menu a").forEach(link => {
+                    const key = link.dataset.key;
+
+                    if (liMapping[key]) {
+                        // ✅ Update existing link
+                        link.textContent = liMapping[key].text;
+                        link.href = liMapping[key].href;
+                    } else {
+                        // 🚫 Remove links not defined in the current page mapping
+                        link.closest("li").remove();
+                    }
+                });
+
+                // ✅ (Optional) Add "Home" if current page defines it but HTML doesn't have it
+                if (!document.querySelector('#menu a[data-key="home"]') && liMapping.home) {
+                    const ul = document.querySelector("#menu ul");
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.dataset.key = "home";
+                    a.textContent = liMapping.home.text;
+                    a.href = liMapping.home.href;
+                    li.appendChild(a);
+                    ul.insertBefore(li, ul.firstChild); // Add Home at the top
+                }
+            })
+            .catch(err => console.error("Menu load error:", err));
+
+        // Load top-bar content dynamically, with the btn mapping according to the current page:
+        const btnMapping = {
+            about: { text: "About Me", href: "./pages/aboutme.html" },
+            more: { text: "Dashboard", href: "./pages/dashboard.html" },
+            contact: { text: "Get in Touch", href: "./pages/contactMe.html" }
+        };
+
+        fetch("./components/topbar/topbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("top-bar").innerHTML = html;
+
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "./components/topbar/topbar.css";
+                document.head.appendChild(link);
+
+                const container = document.getElementById("top-bar");
+                container.querySelectorAll("button").forEach(btn => {
+                    const key = btn.dataset.key;
+                    if (btnMapping[key]) {
+                        btn.textContent = btnMapping[key].text;
+                        btn.onclick = () => (window.location.href = btnMapping[key].href);
+                    }
+                });
+            })
+            .catch(err => console.error("Topbar navigation tools load error:", err));
+
+        // add event listeners for previews page if needed
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('lastPage', window.location.pathname);
+        });
+    </script>
+
+</body>
+
+</html>
