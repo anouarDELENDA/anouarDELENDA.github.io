@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <script>
+        fetch("./components/GA_CMP/add_to_head.html")
+          .then(response => response.text())
+          .then(html => document.write(html));
+    </script>
+    
     <meta charset="utf-8">
     <!-- this is the title of the page -->
     <title>Dashboard</title>
