@@ -33,3 +33,19 @@
   vertical-align: super;
   font-size: smaller;
 }
+
+.layout-box {
+  display: flex; /* put image & abstract side-by-side */
+  align-items: flex-start; /* align at the top */
+  gap: 20px; /* space between image & text */
+  margin-top: 5vh;
+  padding: 2vh 3vw;
+  background-color: #f9f9ff;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
