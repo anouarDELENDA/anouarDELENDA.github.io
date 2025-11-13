@@ -4,11 +4,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8"> 
-       
+    <meta charset="utf-8">
+
     <!-- Includes -->
     {% include add_to_head.html %}
-    
+
     <!-- this is the title of the page -->
     <title>Publications</title>
 
@@ -35,7 +35,7 @@
     <!-- main content goes inside a layout component -->
     <div class="layout">
 
-        <div id="publications_content"></div>    
+        <div id="publications_content"></div>
 
     </div>
 
@@ -149,10 +149,10 @@
                 document.getElementById("publications_content").innerHTML = marked.parse(markdown);
 
                 // Inject CSS for Markdown styling
-                const link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = "../components/markdown/markdown.css"; // or your Markdown CSS
-                document.head.appendChild(link);
+                //const link = document.createElement("link");
+                //link.rel = "stylesheet";
+                //link.href = "../components/markdown/markdown.css"; // or your Markdown CSS
+                //document.head.appendChild(link);
             })
             .catch(err => console.error("Failed to load publications content:", err));
 

@@ -1,0 +1,227 @@
+---
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Includes -->
+    {% include add_to_head.html %}
+
+    <!-- this is the title of the page -->
+    <title>Pyroman2025</title>
+
+    <!-- the css styles for the page are defined here -->
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- internal style if needed -->
+    <style>
+        .markdown-container {
+            font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding-bottom: 10vh;
+            margin-bottom: 20vh;
+        }
+
+        .markdown-container h1,
+        .markdown-container h2,
+        .markdown-container h3 {
+            font-weight: 600;
+            margin-top: 1.5em;
+            text-align: left;
+            margin: auto;
+            display: block;
+        }
+
+        .markdown-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.5rem auto;
+        }
+
+        .markdown-container table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .markdown-container th,
+        .markdown-container td {
+            padding: 0.5rem;
+            text-align: left;
+            margin-right: 0%;
+        }
+
+        /* Container for all details */
+        .markdown-container details {
+            text-align: left;
+            /* Align text to the left */
+            margin-left: 0;
+            /* Remove extra indentation */
+            padding-left: 0;
+            /* Remove padding */
+            border-left: 2px solid #eee;
+            /* Optional: nice visual cue */
+            padding: 0.5rem 1rem;
+            /* Add some internal padding */
+            margin-bottom: 1rem;
+            /* Space between toggle sections */
+        }
+
+        .markdown-container details[open] {
+            max-height: 300px;
+            /* limit height when expanded */
+            overflow: auto;
+            /* scroll if content exceeds max-height */
+            padding: 0.5rem 1rem;
+            border-left: 2px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .markdown-container details li {
+            align-items: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- include GA tag-Manager -->
+    {% include after_body_tag.html %}
+    <!-- the content of the page goes here -->
+
+    <!-- Top navigation buttons -->
+    <div id="top-bar"></div>
+
+    <!-- log and menu button -->
+    <div id="menu"></div>
+
+    <!-- main content goes inside a layout component -->
+    <div class="layout">
+
+        <div id="Pyroman2025_content" class="markdown-container"></div>
+
+    </div>
+
+    <!-- include the footer -->
+    <div id="footer"></div>
+
+    <!-- some JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- this is a Markdown parser in JavaScript -->
+    <script>
+        // Load footer content dynamically
+        fetch("../../components/footer/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("footer").innerHTML = html;
+
+                // Inject footer.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../../components/footer/footer.css";
+                document.head.appendChild(link);
+            })
+            .catch(err => console.error("Footer load error:", err));
+        // Load menu & logo-btn content dynamically
+        const liMapping = {
+            home: { text: "Home", href: "../../index.html" },
+            confsWorkshops: { text: "Conferences & Workshops", href: "../confsWorkshops.html" },
+            aboutme: { text: "About Me", href: "../aboutme.html" },
+            projects: { text: "Projects", href: "../projects.html" },
+            blogs: { text: "Blogs", href: "../blogs.html" },
+            contactMe: { text: "Contact Me", href: "../contactMe.html" }
+        };
+
+        fetch("../../components/menu/menu.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("menu").innerHTML = html;
+
+                // Inject menu.css manually into <head>
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../../components/menu/menu.css";
+                document.head.appendChild(link);
+
+                // Load JS (after HTML inserted)
+                const script = document.createElement("script");
+                script.src = "../../components/menu/menu.js";
+                document.body.appendChild(script);
+
+                // Update <a> links based on liMapping
+                document.querySelectorAll("#menu a").forEach(link => {
+                    const key = link.dataset.key;
+
+                    if (liMapping[key]) {
+                        // ✅ Update existing link
+                        link.textContent = liMapping[key].text;
+                        link.href = liMapping[key].href;
+                    } else {
+                        // 🚫 Remove links not defined in the current page mapping
+                        link.closest("li").remove();
+                    }
+                });
+
+                // ✅ (Optional) Add "Home" if current page defines it but HTML doesn't have it
+                if (!document.querySelector('#menu a[data-key="home"]') && liMapping.home) {
+                    const ul = document.querySelector("#menu ul");
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.dataset.key = "home";
+                    a.textContent = liMapping.home.text;
+                    a.href = liMapping.home.href;
+                    li.appendChild(a);
+                    ul.insertBefore(li, ul.firstChild); // Add Home at the top
+                }
+            })
+            .catch(err => console.error("Menu load error:", err));
+
+        // Load top-bar content dynamically, with the btn mapping according to the current page:
+        const btnMapping = {
+            about: { text: "About Me", href: "../aboutme.html" },
+            more: { text: "Dashboard", href: "../dashboard.html" },
+            contact: { text: "Get in Touch", href: "../contactMe.html" }
+        };
+
+        fetch("../../components/topbar/topbar.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("top-bar").innerHTML = html;
+
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "../../components/topbar/topbar.css";
+                document.head.appendChild(link);
+
+                const container = document.getElementById("top-bar");
+                container.querySelectorAll("button").forEach(btn => {
+                    const key = btn.dataset.key;
+                    if (btnMapping[key]) {
+                        btn.textContent = btnMapping[key].text;
+                        btn.onclick = () => (window.location.href = btnMapping[key].href);
+                    }
+                });
+            })
+            .catch(err => console.error("Topbar navigation tools load error:", err));
+
+        // Load Pyroman2025 content from a markdown file
+        fetch("./Pyroman2025.md") // path to Markdown
+            .then(res => res.text()) // get raw text directly
+            .then(markdown => {
+                // Convert Markdown to HTML
+                document.getElementById("Pyroman2025_content").innerHTML = marked.parse(markdown);
+            
+            })
+            .catch(err => console.error("Failed to load Carbon25 content:", err));
+
+        // add event listeners for previews page if needed
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('lastPage', window.location.pathname);
+        });
+    </script>
+
+</body>
+
+</html>

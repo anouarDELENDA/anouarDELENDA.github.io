@@ -5,10 +5,10 @@
 
 <head>
     <meta charset="utf-8">
-        
+
     <!-- Includes -->
     {% include add_to_head.html %}
-    
+
     <!-- this is the title of the page -->
     <title>Conferences & Workshops</title>
 
@@ -17,14 +17,79 @@
     <link rel="stylesheet" href="../css/styles.css">
     <!-- internal style if needed -->
     <style>
+        .markdown-container {
+            font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding-bottom: 10vh;
+            margin-bottom: 20vh;
+        }
 
+        .markdown-container h1,
+        .markdown-container h2,
+        .markdown-container h3 {
+            font-weight: 600;
+            margin-top: 1.5em;
+            text-align: left;
+            margin: auto;
+            display: block;
+        }
+
+        .markdown-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.5rem auto;
+        }
+
+        .markdown-container table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .markdown-container th,
+        .markdown-container td {
+            padding: 0.5rem;
+            text-align: left;
+            margin-right: 0%;
+        }
+
+        /* Container for all details */
+        .markdown-container details {
+            text-align: left;
+            /* Align text to the left */
+            margin-left: 0;
+            /* Remove extra indentation */
+            padding-left: 0;
+            /* Remove padding */
+            border-left: 2px solid #eee;
+            /* Optional: nice visual cue */
+            padding: 0.5rem 1rem;
+            /* Add some internal padding */
+            margin-bottom: 1rem;
+            /* Space between toggle sections */
+        }
+
+        .markdown-container details[open] {
+            max-height: 300px;
+            /* limit height when expanded */
+            overflow: auto;
+            /* scroll if content exceeds max-height */
+            padding: 0.5rem 1rem;
+            border-left: 2px solid #eee;
+            margin-bottom: 1rem;
+        }
+
+        .markdown-container details li {
+            align-items: left;
+        }
     </style>
 </head>
 
 <body>
     <!-- include GA tag-Manager -->
     {% include after_body_tag.html %}
-    
+
     <!-- the content of the page goes here -->
 
     <!-- Top navigation buttons -->
@@ -36,16 +101,16 @@
     <!-- main content goes inside a layout component -->
     <div class="layout">
 
-        <div id="confsWorkshops_comingsoon"></div>
+        <div id="confsWorkshops_content" class="markdown-container"></div>
 
     </div>
 
     <!-- include the footer -->
     <div id="footer"></div>
 
-    
+
     <!-- some JavaScript -->
-     <!-- this is a Markdown parser in JavaScript -->
+    <!-- this is a Markdown parser in JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         // Load footer content dynamically
@@ -143,19 +208,14 @@
             })
             .catch(err => console.error("Topbar navigation tools load error:", err));
 
-        // Load coming soon section
-        fetch("../components/comingsoon/comingsoon.html")
+        // Load confsWorkshops content
+        fetch("../components/markdown/ConfsWork_page.md")
             .then(res => res.text())
-            .then(html => {
-                document.getElementById("confsWorkshops_comingsoon").innerHTML = html;
-
-                // Inject comingsoon.css manually into <head>
-                const link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = "../components/comingsoon/comingsoon.css";
-                document.head.appendChild(link);
+            .then(markdown => {
+                document.getElementById("confsWorkshops_content").innerHTML =
+                    marked.parse(markdown);
             })
-            .catch(err => console.error("Coming-soon section load error:", err));        
+            .catch(err => console.error("Failed to load Conferences&Workshoprs content:", err));
 
         // add event listeners for previews page if needed
         window.addEventListener('beforeunload', () => {

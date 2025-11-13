@@ -5,10 +5,10 @@
   padding: 0;
   padding-top: 10vh;
   padding-bottom: 5vh;
-  margin: 5vh 5vw 0 10vw; /*/*<top> <right> <bottom> <left>;*/
+  margin: 5vh 5vw 10vh 10vw; /*/*<top> <right> <bottom> <left>;*/
   font-family: Arial, sans-serif;
   align-items: center; /* horizontal only */
-  overflow: auto;
+  overflow: scroll;
 }
 .layout img {
   max-width: 100%;
