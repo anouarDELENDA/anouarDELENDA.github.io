@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on A.K.A λ</title>
+    <link>http://localhost:1313/portfolio/projects/</link>
+    <description>Recent content in Projects on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Sun, 12 Apr 2026 23:29:31 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MLatomsENG</title>
+      <link>http://localhost:1313/portfolio/projects/mlatomseng/</link>
+      <pubDate>Sun, 12 Apr 2026 23:28:50 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/projects/mlatomseng/</guid>
+      <description>&lt;h1 id=&#34;model-selection-for-atomization-energy-prediction&#34;&gt;Model Selection for Atomization Energy Prediction&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;div style=&#34;overflow:auto;margin:0 0 1em 0; max-width:80wv; height:auto; display:block;padding-bottom:2%&#34;&gt;&#xA;&lt;img src=&#39;../../assets/images/projects/model_selection.png&#39; style=&#34;float:right; margin:0 0 1em 1em; max-width:200px; height:auto; display:block;&#34;&gt;&#xA;&lt;p style=&#34;text-align:justify;&#34;&gt; In this work, I aim to span a various Machine Learning models; especially the regression ones. And the goal is to select the most promissing model that can predict in a smart fashion the Atomization energy of a given molecular structure. The Data can be found in the DataBase called GDB−13, also it is available under the name &lt;code&gt;roboBohr&lt;/code&gt; as &lt;code&gt;csv&lt;/code&gt; file format in kaggle&#39;s Dataset &lt;code&gt;energy-molecule&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FASTPtyco</title>
+      <link>http://localhost:1313/portfolio/projects/fastptyco/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:31 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/projects/fastptyco/</guid>
+      <description>&lt;h1 id=&#34;ultrafast-ptychography&#34;&gt;Ultrafast Ptychography&lt;/h1&gt;&#xA;&lt;p style=&#34;text-align:justify;&#34;&gt;&#xA;The Ptychography is a microscopy tool to investigate the crystal structure, this idea started in the lately sixties (1969) by Walter Hoppe. And by the growth of the computational power it start to gain more attention in 1982. The main concept addressed by this method is to reconstruct a crystal structure. Emerging the Ptychography into spectroscopy can be done by changing the problem from spatial-reciprocal space representation to time-frequency description. &lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LTM</title>
+      <link>http://localhost:1313/portfolio/projects/ltm/</link>
+      <pubDate>Sun, 12 Apr 2026 23:28:55 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/projects/ltm/</guid>
+      <description>&lt;h1 id=&#34;linear-tetrahedron-method&#34;&gt;linear tetrahedron method&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>DACOVID19</title>
+      <link>http://localhost:1313/portfolio/projects/dacovid19/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/projects/dacovid19/</guid>
+      <description>&lt;h1 id=&#34;covide-19&#34;&gt;COVIDE 19&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

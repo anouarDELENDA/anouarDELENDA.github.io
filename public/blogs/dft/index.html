@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<title>Bottom-up synthesis of Density Functional Theory (DFT) :: A.K.A λ - Example site for hugo-theme-tailwind</title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=" Bottom-up synthesis of Density Functional Theory (DFT) From the Born-Oppenheimer approximation to the Kohn &amp; Sham equation. Disclaimer The content of this article is based on various internet resources1. Furthermore, I have attempted to provide a simplified approach to the re-derivation of the equations. Therefore, there may be potential hiccups and mathematicals glichs in some simplifications. Here, I apologize in advance for any mistakes. However, I would welcome any corrections from you.
+"
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="http://localhost:1313/blogs/dft/">
+  <meta property="og:site_name" content="A.K.A λ">
+  <meta property="og:title" content="Bottom-up synthesis of Density Functional Theory (DFT)">
+  <meta property="og:description" content="Bottom-up synthesis of Density Functional Theory (DFT) From the Born-Oppenheimer approximation to the Kohn &amp; Sham equation. Disclaimer The content of this article is based on various internet resources1. Furthermore, I have attempted to provide a simplified approach to the re-derivation of the equations. Therefore, there may be potential hiccups and mathematicals glichs in some simplifications. Here, I apologize in advance for any mistakes. However, I would welcome any corrections from you.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2026-04-13T00:32:05+02:00">
+    <meta property="article:modified_time" content="2026-04-13T00:32:05+02:00">
+    <meta property="article:tag" content="Density Functional Theory">
+    <meta property="article:tag" content="Kohn and Sham">
+    <meta property="article:tag" content="Schrödinger Equation">
+    <meta property="article:tag" content="Born-Oppenheimer Approximation">
+    <meta property="article:tag" content="Hartree-Fock Equation">
+    <meta property="article:tag" content="Electronic Density">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bottom-up synthesis of Density Functional Theory (DFT)">
+  <meta name="twitter:description" content="Bottom-up synthesis of Density Functional Theory (DFT) From the Born-Oppenheimer approximation to the Kohn &amp; Sham equation. Disclaimer The content of this article is based on various internet resources1. Furthermore, I have attempted to provide a simplified approach to the re-derivation of the equations. Therefore, there may be potential hiccups and mathematicals glichs in some simplifications. Here, I apologize in advance for any mistakes. However, I would welcome any corrections from you.">
+
+
+<link rel="canonical" href="http://localhost:1313/blogs/dft/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.c3a5d1586276a68cf55558ab67f2c726fee27f4aea3add1802872f471c5f233d.css">
+
+
+
+
+
+
+
+
+
+
+  
+
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+  crossorigin="anonymous">
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$',  right: '$$',  display: true},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  })">
+</script>
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+
+<div class="fixed right-0 top-0 z-50 flex items-center justify-center bg-gray-200 p-2 text-sm uppercase text-black sm:bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-pink-200">
+  <span class="block sm:hidden">all</span>
+  <span class="hidden sm:block md:hidden">sm</span>
+  <span class="hidden md:block lg:hidden">md</span>
+  <span class="hidden lg:block xl:hidden">lg</span>
+  <span class="hidden xl:block 2xl:hidden">xl</span>
+  <span class="hidden 2xl:block">2xl</span>
+</div>
+
+<header class="flex flex-none justify-center z-10">
+<div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/images/logo.png" alt="logo">
+    </a>
+  </div>
+  
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-xs md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/" title="Home">Home</a>
+        </li>
+      
+    
+        <li id="" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/publications/" title="Publications">Publications</a>
+        </li>
+      
+    
+        <li id="" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/portfolio/" title="Portfolio">Portfolio</a>
+        </li>
+      
+    
+        <li id="" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="/blogs/" title="Blogs">Blogs</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="relative flex items-center gap-1 px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="absolute z-10 w-15 h-8 rounded-full bg-white dark:bg-gray-700"></div>
+      <i class="h-6 w-6 z-20 ml-1 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:invisible">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+      </i>
+      <i class="h-6 w-6 z-20 mr-1 flex-none rounded-full place-self-center invisible peer-checked:visible">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+      </i>
+    </label>
+  </div>
+</div>
+
+</header>
+<main class="flex flex-auto justify-center">
+
+<div id="progress" class="fixed top-0 left-0 w-full h-1 bg-blue-500"></div>
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
+    <div>
+      <a href="/blogs/dft/">
+        
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-3 p-6">
+      <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+        <a href="/blogs/dft/">Bottom-up synthesis of Density Functional Theory (DFT)</a>
+      </h1>
+
+      
+      
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/categories/blogs/"
+          class="text-sm mr-2 px-2 py-1 rounded-sm border border-emerald-800 bg-emerald-800 text-slate-50">
+          Blogs
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/tags/density-functional-theory/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Density Functional Theory</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/kohn-and-sham/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Kohn and Sham</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/schr%C3%B6dinger-equation/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Schrödinger Equation</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/born-oppenheimer-approximation/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Born-Oppenheimer Approximation</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/hartree-fock-equation/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Hartree-Fock Equation</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/electronic-density/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Electronic Density</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/wavefunction/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Wavefunction</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2026-04-13T00:32:05&#43;02:00">
+      2026-04-13
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      24 minutes to read
+    </span>
+  </div>
+</div>
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+    </i>
+    <span>Anouar Akacha Delenda</span>
+  </div>
+</div>
+
+      
+        
+        <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+          <h2>Table of Contents</h2>
+          <aside><nav id="TableOfContents">
+  <ol>
+    <li><a href="#bottom-up-synthesis-of-density-functional-theory-dft-from-the-born-oppenheimer-approximation-to-the-kohn--sham-equation">Bottom-up synthesis of Density Functional Theory (DFT)</br> From the Born-Oppenheimer approximation to the Kohn &amp; Sham equation.</a></li>
+    <li><a href="#1-introduction">1. Introduction</a></li>
+    <li><a href="#2-how-to-tame-schrödinger-equation-">2. How to tame Schrödinger equation ?</a>
+      <ol>
+        <li><a href="#21-born-oppenheimer-approximation">2.1 Born-Oppenheimer approximation</a></li>
+        <li><a href="#22-hartree-fock-method-post-hf-method">2.2 Hartree-Fock method (post-HF method)</a></li>
+        <li><a href="#221-slater-expression">2.2.1 Slater expression</a></li>
+        <li><a href="#222-energy-minimization">2.2.2 Energy minimization</a></li>
+        <li><a href="#223-hartree-fock-equation">2.2.3 Hartree-Fock equation</a></li>
+        <li><a href="#224-koopmans-theorem--the-ionization-energy">2.2.4 KOOPMAN&rsquo;S THEOREM &amp; The Ionization energy</a></li>
+        <li><a href="#225-hartree-fock-roothaan-go-to-toc">2.2.5 Hartree-Fock-Roothaan Go to TOC</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-the-many-body-problem-as-electron-density-dependence-go-to-toc">3 The many-body Problem as electron density dependence Go to TOC</a>
+      <ol>
+        <li><a href="#31-the-electrons-ions-interaction-go-to-toc">3.1 The electrons-ions interaction Go to TOC</a></li>
+        <li><a href="#32-the-electrons-electrons-interaction-go-to-toc">3.2 The electrons-electrons interaction Go to TOC</a></li>
+        <li><a href="#33-the-kinetic-energy-go-to-toc">3.3 The Kinetic Energy Go to TOC</a></li>
+        <li><a href="#34-introducing-the-exchange-correlation-term-go-to-toc">3.4 Introducing the Exchange Correlation term Go to TOC</a></li>
+      </ol>
+    </li>
+    <li><a href="#35-the-hohenberg-kohn-theorem-go-to-toc">3.5 THE HOHENBERG-KOHN THEOREM Go to TOC</a></li>
+    <li><a href="#4-kohn-and-sham-equation-derivation-attempt-go-to-toc">4 Kohn and Sham Equation: Derivation attempt! Go to TOC</a></li>
+    <li><a href="#5-solving-ks-equation-go-to-toc">5 Solving KS equation Go to TOC</a>
+      <ol>
+        <li><a href="#51-the-electron-electron-interaction-hartee-energy-term-go-to-toc">5.1 The electron-electron interaction (Hartee Energy term) Go to TOC</a></li>
+        <li><a href="#52-the-electron-electron-interaction-hartee-potential-term-go-to-toc">5.2 The electron-electron interaction (Hartee Potential term) Go to TOC</a></li>
+        <li><a href="#53-the-exchange-correlation-term-go-to-toc">5.3 The exchange-correlation term Go to TOC</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></aside>
+        </section>
+        
+      
+
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+        <p><a id="toppage"> </a></p>
+<h1 id="bottom-up-synthesis-of-density-functional-theory-dft-from-the-born-oppenheimer-approximation-to-the-kohn--sham-equation"><center>Bottom-up synthesis of Density Functional Theory (DFT)</center></br> <p style="text-align:center;font-weight:normal;">From the Born-Oppenheimer approximation to the Kohn &amp; Sham equation.</h1>
+</br>
+<details>
+<summary> <b> Disclaimer</b>
+</summary>
+<blockquote>
+<p>The content of this article is based on various internet resources<b><sup>1</sup></b>. Furthermore, I have attempted to provide a simplified approach to the re-derivation of the equations. Therefore, there may be potential hiccups and mathematicals glichs in some simplifications. Here, I apologize in advance for any mistakes. However, I would welcome any corrections from you.<br></p>
+<p><b><sup>1</sup></b>:
+There was a Turkish website from Istanbul University with in-depth derivations, if I remember correctly. Unfortunately, I stupidly forgot to keep track of the URL. Thousand apologies for that 😅.</p>
+</blockquote>
+</details>
+</br>
+<blockquote>
+</br>
+<p><a id="motivation"></a>💪 <strong>Motivation</strong></p>
+<div style="overflow:auto;margin:0 0 1em 0; max-width:80wv; height:auto; display:block;padding-bottom:2%">
+ <figure style="float:right; margin:0 0 1em 1em; max-width:200px; display:block;">
+   <img src="/images/blogs/DFT_BottomUP/Gerbrand_Ceder.png" style="width:100%; height:auto; display:block;">
+   <figcaption style="text-align:center;"> Gerbrand Ceder Pr @ University of California, Berkeley & <a href="https://vcresearch.berkeley.edu/faculty/gerbrand-ceder">Samsung Distinguished Chair in Nanoscience and Nanotechnology Research</a></figcaption>
+ </figure>
+ <p style="text-align:center;">“Today we know less than 1% of known compounds in the world; less than 1% of the materials properties.”</br>
+</br>
+Gerbrand Ceder @ The Material Desing Revolution <a href="https://www.youtube.com/watch?v=OE38aVAgOPM">the World Economic Forum (2014, Davoz)</a>.
+</p>
+<p align="center"><img src='/images/blogs/DFT_BottomUP/Ceder_qrcode.png' style="margin:0 0 1em 1em; width:80px; height:80px; display:block;"></p>
+</div>
+</blockquote>
+<h1 id="1-introduction">1. Introduction</h1>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<p><strong>Definition:</strong></p>
+<p>A mathematical model about a sufficiently large set of natural phenomena is called an “<strong><em>ab initio model</em></strong> ” or a “<strong><em>first principles model</em></strong>” if the starting point of the model can not be further reduced to more fundamental concepts (at least not within the language of the considered natural phenomena).</p>
+<p align="right">By <b>Pr. Stefaan Cottenier</b> @ Ghent University. </p>
+<p>Furhtermore, the main idea is to tame the following beast:</p>
+\[
+\begin{equation}
+\hat{\mathcal{H}}\Psi = E\Psi
+\end{equation}
+\]<p>Where the Hamiltonian is given in <strong>atomic unit</strong> for \(N_e\) electrons and \(N_n\) nucleus as following:</p>
+\[
+\begin{equation}
+\mathcal{H} = -\sum_i^{N_e} \frac{\nabla^2_{\overrightarrow{r_i}}}{2m_i}-\sum_i^{N_n} \frac{\nabla^2{\overrightarrow{R_i}}}{2M_i} + \frac{1}{2}\sum_{i =1}^{N_e}\sum_{i\neq j}^{N_e} \frac{1}{|\overrightarrow{r_i}-\overrightarrow{r_j}|}+ \frac{1}{2}\sum_{i =1}^{N_n}\sum_{i\neq j}^{N_n} \frac{Z_iZ_j}{|\overrightarrow{R_i}-\overrightarrow{R_j}|} - \frac{1}{2}\sum_{i =1}^{N_e}\sum_{j = 1}^{N_n} \frac{Z_j}{|\overrightarrow{r_i}-\overrightarrow{R_j}|}
+\end{equation}
+\]<p>The right-hand side of \((2)\) are respectively: <strong>electron</strong> and <strong>nucleus</strong> <em>kinetic energy</em>, <strong>electron-electron</strong> and <strong>nuclei-nuclie</strong> <em>Coulomb interaction</em> and the <strong>electron-nuclie</strong> <em>Coulomb interaction</em>.</p>
+<h1 id="2-how-to-tame-schrödinger-equation-">2. How to tame Schrödinger equation ?</h1>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<h2 id="21-born-oppenheimer-approximation">2.1 Born-Oppenheimer approximation</h2>
+<p>The basic idea is the following: ”<em>We consider the nuclei as stationary objects, so we freeze the nuclear positions.</em>”. We say that this approximation is <strong>adiabatic</strong> (We move from \(4(Ne + Nn) \longrightarrow 4Ne\)).</p>
+\[
+\begin{equation}\Psi(\overrightarrow{r_i},\overrightarrow{\sigma_i},\overrightarrow{R_i},\overrightarrow{\sigma_i^N}) \longrightarrow \Psi(\overrightarrow{r_1},\overrightarrow{\sigma_1},\dots , \overrightarrow{r_{N_e}},\overrightarrow{\sigma_{N_e}}; \underbrace{\left[\overrightarrow{R_1}, \dots , \overrightarrow{R_{N}}\right]}\_{Paramaters})\end{equation}
+\]<p>The previous wavefunction should be <strong><em>anti-symmetric</em></strong>. The problem is reduced into solving the Schrödinger equation for the following Hamiltonian:</p>
+\[
+\begin{equation}\mathcal{H} = -\sum_i^{N_e}\frac{\nabla_{r_i}^2}{m_i} - \sum_{\{i,j\}\longrightarrow \{N_e, N_n\}}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} + \frac{1}{2}\sum_{i}^{N_e}\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} + \underbrace{\frac{1}{2}\sum_{i}^{N_n}\sum_{i\neq j}^{N_n}\frac{Z_jZ_i}{|\overrightarrow{R_j}-\overrightarrow{R_i}|}}*{Constant}\end{equation}
+\]<blockquote>
+</br>
+<p>ℹ️ <strong>Note:</strong> that \(\textbf{BO}\)-approximation is a major simplification, but it is <strong>way too hard to solve!</strong> more work is needed.</br></p>
+</blockquote>
+<h2 id="22-hartree-fock-method-post-hf-method">2.2 Hartree-Fock method (post-HF method)</h2>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<blockquote>
+</br>
+<p>💡 <strong><em>The main idea:</em></strong> </br>
+For all the possible sets of the wavefunctions that can describe our system, we search for the one associated to the ground state.
+With the following restrictions:</br></p>
+<ul>
+<li>
+<p>Just the anti-symmetric wavefunctions;</p>
+</li>
+<li>
+<p>Use Salter determinant;</p>
+</li>
+<li>
+<p>The energy minimization principal.</p>
+</li>
+</ul>
+<p>⚠️ At the end this is an approximation (work well for chemistry topics, not for solids).</br> &gt;</br></p>
+</blockquote>
+<p>The first step is visualizing the terms in the reduced Schrödinger equation after \(\textbf{BO}\) approximation. After all, we end up with:</p>
+\[
+\begin{equation}
+\mathcal{H} = \sum_i^{N_e}\underbrace{\left[-\frac{\nabla_{r_i}^2}{m_i} - \sum_j^{N_n}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} \right]}_{\hat{h}_1(\overrightarrow{r_i})\equiv\ single-particle } + \frac{1}{2}\sum_{i}^{N_e}\underbrace{\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} }_{\hat{h}\_2(r_i,r_j)\equiv\ effective\ potential}
+\end{equation}
+\]<p>Notice that we omitted the constant term, the reason will be more obvious in the following derivations. The Hartree-Fock method is a variational, wavefunction-based approach. Although it is a many-body technique, the approach followed is that of a single-particle picture, i.e. the electrons are considered as occupying single-particle orbitals making up the wavefunction. Each electron feels the presence of the other electrons indirectly through an effective potential. Each orbital, thus, is affected by the presence of electrons in other orbitals. Now to build our wavefunction, instinctively we write our function as the product of the orbitals occupied by the electrons, and for simplicity we drop the spin degrees of freedom:</p>
+\[
+\begin{equation}
+\Psi(r_1,\dots,r_n) = \varphi_1(r_1)\times \dots\times \varphi_N(r_N)
+\end{equation}
+\]<p>❗ <strong>But wait</strong>, this expression <strong>violate</strong> the first restriction mentioned above ! We need another tools that respect the anti-symmetric feature of the wavefunction.</p>
+<h2 id="221-slater-expression">2.2.1 Slater expression</h2>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<p>One way to overcome the raised problem is the so called \(Slater\) determinant:</p>
+\[
+\begin{equation}
+\Psi(r_1,\dots,r_n) = \frac{1}{\sqrt{N_e!}}\begin{pmatrix}
+\varphi_1(r_1) & \dots & \varphi_N(r_1)\\
+\vdots & \vdots & \vdots \\
+\varphi_1(r_N) & \dots & \varphi_N(r_N)
+\end{pmatrix}
+\end{equation}
+\]<p>Now, we will try to write more compact formula for our wavefuction:</p>
+\[
+\begin{equation*}
+\Psi(\{\overrightarrow{r}\}) = \frac{1}{\sqrt{N_e!}} \sum_i^{N_e} (-1)^{P(i)}\varphi_{i_1}(r_1)\dots \varphi_{i_N}(r_N)
+\end{equation*}
+\]<aside>
+🗣 The notation here is ambiguous, and not obvious! By far, the \((-1)^{P(i)}\) factor result from the expansion of the determinant. For which it is <b>+1</b> if we have a term with an even permutation (e.g: \(3\longrightarrow 1 \longrightarrow 2\)) or <b>-1</b> for an odd permutation (e.g: \(3\longrightarrow 2 \longrightarrow 1\)).
+</aside>
+<h2 id="222-energy-minimization">2.2.2 Energy minimization</h2>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<p>As the \(\textbf{HF}\) method relies on a variational principal:
+</p>
+\[
+\begin{equation}
+\bra{\Psi}\mathcal{H}_{HF}\ket{\Psi} = \bra{\Psi}\sum_i\hat{h}_1(r_i)\ket{\Psi} +\frac{1}{2}\bra{\Psi}\sum_{i\neq j}\hat{h}_{2}(r_i,r_j)\ket{\Psi}
+\end{equation}
+\]<p>We start by evaluating the expected value of the single particle (first term on the right side ):</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_n\hat{h}_1(r_n)\ket{\Psi} =& \frac{1}{N!}\sum_n^{N}\sum_j^{N!}\sum_i^{N!} (-1)^{P(j)}(-1)^{P(i)}\times\\
+&\langle\varphi_{j_1}(r_1)\dots \varphi_{j_N}(r_N)|\hat{h}_1(r_n)|\varphi_{i_1}(r_1)\dots \varphi_{i_N}(r_N)\rangle
+\end{align*}
+\]<p>The trick that works with me is to write down \(\textcolor{green}{first}\) the orbitals that the Hamiltonian is mainly! applied on. Then we write the remaining terms as single \(bra-ket\) products :</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_n\hat{h}_1(r_n)\ket{\Psi} =& \frac{1}{N!}\sum_n^{N}\sum_j^{N!}\sum_i^{N!} (-1)^{P(j)}(-1)^{P(i)}\times\\
+& \langle\varphi_{1_j}(r_j)|\varphi_{1_i}(r_i)\rangle\times \dots\\
+& \times \textcolor{green}{\langle\varphi_{j_n}(r_n)|\hat{h}_1(r_n)|\varphi_{i_n}(r_n)\rangle}\times \dots \\
+& \times \langle\varphi_{N_j}(r_N)|\varphi_{i_N}(r_N)\rangle
+\end{align*}
+\]<p>With the \(anzats\): \(\langle\varphi_j|\varphi_i\rangle=\delta_{ij}\)</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_n\hat{h}_1(r_n)\ket{\Psi} =& \frac{1}{N!}\sum_n^{N}\sum_j^{N!}\sum_i^{N!} (-1)^{P(j)}(-1)^{P(i)}\times\\
+& \delta_{1_j1_i}\times \dots\times\langle\varphi_{j_n}(r_n)|\hat{h}_1(r_n)|\varphi_{i_n}(r_n)\rangle\times \dots \times \delta_{N_jN_i}
+\end{align*}
+\]<p>Since we end up with one sum(\(i=j\)) \(N!\) times over all the orbitals, we have always the same \(+\) sign in front of the product:</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_n\hat{h}_1(r_n)\ket{\Psi} =\frac{1}{N!}\sum_n^{N} \sum_i^{N!}\langle\varphi_{i_n}(r_i)|\hat{h}_1(r_n)|\varphi_{i_n}(r_i)\rangle
+\end{align*}
+\]<p>In conclusion the first term in \(\textbf{HF}\) energy is the expected total energy of all the single particles treated individually.</p>
+\[
+\begin{equation*}
+\bra{\Psi}\sum_i\hat{h}_1(r_i)\ket{\Psi} =\sum_i^{N} \langle\varphi_{i}(r_i)|\hat{h}_1(r_i)|\varphi_{i}(r_i)\rangle
+\end{equation*}
+\]<p>Let&rsquo;s tackle the second terms:</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_{n\neq m}\hat{h}_{2}(r_n,r_m)\ket{\Psi} =& \frac{1}{N!}\sum_{n\neq m}\sum_j^{N!}\sum_i^{N!} (-1)^{P(j)}(-1)^{P(i)}\times\\
+&\langle\varphi_{j_1}(r_1)\dots \varphi_{j_N}(r_N)|\hat{h}_2(r_n, r_m)|\varphi_{i_1}(r_1)\dots \varphi_{i_N}(r_N)\rangle
+\end{align*}
+\]<p>We use the same tricks as before:</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_{n\neq m}\hat{h}_{2}(r_n,r_m)\ket{\Psi} =& \frac{1}{N!}\sum_{n\neq m}\sum_j^{N!}\sum_i^{N!} (-1)^{P(j)}(-1)^{P(i)}\times\\
+& \delta_{1_j1_i}\times \dots \times \textcolor{green}{\langle\varphi_{j_n}(r_n)\varphi_{j_m}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{i_n}(r_n)\varphi_{i_m}(r_m)\rangle}\\
+&\times \dots \times \delta_{N_jN_i}
+\end{align*}
+\]<p>Which is reduced into ( Notice the order \(n < m\).):</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_{n< m}\hat{h}_{2}(r_n,r_m)\ket{\Psi} =& \frac{1}{N!}\sum_{n< m}\sum_i^{N!}(-1)^{P(i)}\langle\varphi_{i_n}(r_n)\varphi_{i_m}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{i_n}(r_n)\varphi_{i_m}(r_m)\rangle
+\end{align*}
+\]<p>Here we have one permutation operators \(P\) acting on the order of the set of orbitals \(\{1, 2, \dots, n, \dots, m, \dots, N\}\). It is not obvious, but clearly we are expecting something to pop-up for sure! And the idea is to separate all the \(even\) and the \(odd\) permutations in the previous set:</p>
+\[
+    \begin{align*}
+    \bra{\Psi}\sum_{n< m}\hat{h}_{2}(r_n,r_m)\ket{\Psi} =& \frac{1}{N!}\sum_{n< m}\sum_i^{N!}\\
+    &\langle\varphi_{i_n}(r_n)\varphi_{i_m}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{i_n}(r_n)\varphi_{i_m}(r_m)\rangle \\
+    &- \langle\varphi_{i_m}(r_n)\varphi_{i_n}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{i_m}(r_n)\varphi_{i_n}(r_m)\rangle
+    \end{align*}
+\]<p>For both \(even\) or \(odd\) terms we have \(N!\) times repeated quantities. Hence we find:</p>
+\[
+\begin{align*}
+\bra{\Psi}\sum_{n< m}\hat{h}_{2}(r_n,r_m)\ket{\Psi} =& \sum_{n< m}^N\langle\varphi_{n}(r_n)\varphi_{m}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{n}(r_n)\varphi_{m}(r_m)\rangle \\
+&- \langle\varphi_{m}(r_n)\varphi_{n}(r_m)|\hat{h}_2(r_n, r_m)|\varphi_{m}(r_n)\varphi_{n}(r_m)\rangle
+\end{align*}
+\]<p>At the end we get the following expression for our many-body problem:</p>
+\[
+\begin{equation}
+E_{HF} = \sum_{i}^{N}\bra{\varphi_i}\hat{h}_1\ket{\varphi_i} + \frac{1}{2}\sum_{i}^{N}\sum_{j}^{N}\left[\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j}-\bra{\varphi_j\varphi_i}\hat{h}_2\ket{\varphi_i\varphi_j}\right]
+\end{equation}
+\]<h2 id="223-hartree-fock-equation">2.2.3 Hartree-Fock equation</h2>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<p>In this section we will apply the variational principale on the last equation and the aim is to minimize the total energy:</p>
+\[
+\begin{equation}
+\delta E\_{HF} = 0
+\end{equation}
+\]<p>We use the Lagrange multipliers and the orthogonality of the set of our wvefunctions basis as following:</p>
+\[
+\begin{gather}
+\delta \left[ E_{HF} +\sum_{i,j}\left(-\lambda_{i,j} +\lambda_{i,j}\right) \right] = 0 \\
+\delta \left[ E_{HF} -\sum_{i,j}\lambda_{i,j} \left(\bra{\varphi_i}\ket{\varphi_j}+\delta_{i,j}\right) \right] = 0\\
+\delta F = 0
+\end{gather}
+\]<p>The \(F\) stand for \(Fock\) operator in the last equation. Now we will consider small change in our wavefunction basis (\(\varphi \longrightarrow \varphi + \delta \varphi\)). We first treat the the term with the \(Langrange\) multipliers:</p>
+\[
+\begin{gather*}
+\delta \left[\sum_{i,j}\lambda_{i,j} \left(\bra{\varphi_i}\ket{\varphi_j}+\delta_{i,j}\right) \right] = \sum_{i,j}\lambda_{i,j} \left[\bra{\delta\varphi_i}\ket{\varphi_j}+\bra{\varphi_i}\ket{\delta\varphi_j} \right]
+\end{gather*}
+\]<p>We can write the second term as:</p>
+\[
+\begin{gather*}
+\bra{\varphi_i}\ket{\delta\varphi_j} =\underset{\mathbb{R}^2}{\int} \varphi_i^*(r_i)\delta\varphi_i(r_i) dr^2 = \left[\underset{\mathbb{R}^2}{\int} \varphi_i(r_i)\delta\varphi_i^*(r_i) dr^2\right]^*=\bra{\delta\varphi_i}\ket{\varphi_j}^*
+\end{gather*}
+\]<p>We move forward to differentiate the single electrons expectation value:</p>
+\[
+\begin{gather*}
+\delta\left[\sum_i^N\bra{\varphi}\hat{h}_1\ket{\varphi_i}\right] = \sum_i^N\left[\bra{\delta\varphi}\hat{h}_1\ket{\varphi_i} + \bra{\varphi}\hat{h}_1\ket{\delta\varphi_i}\right]
+\end{gather*}
+\]<p>Since \(\hat{h}_1\) is hermitian operator i.e \(\left(\hat{h}_1\right)^{\dagger}=\hat{h}_1\):</p>
+\[
+\begin{equation*}
+\delta\left[\sum_i^N\bra{\varphi_i}\hat{h}_1\ket{\varphi_i}\right] = \sum_i^N\left[\bra{\delta\varphi}\hat{h}_1\ket{\varphi_i} + C.C\right]
+\end{equation*}
+\]<p>Where \(C.C\) stand for \(Complex\ Conjugate\). Then we work with second term of \(Hartree-Fock\) energy (\(E\_{HF}\)), step by step we will start by the electrons coulomb interaction:</p>
+\[
+\begin{gather*}
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j}\right] = \delta\left[\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}\right] \\
+    + \textcolor{green}{\sum_{i}^{N}\sum_{j}^{N}\bra{\delta\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
+    +  \textcolor{orange}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\delta\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
+    + \textcolor{green}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\delta\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
+    + \textcolor{orange}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\delta\varphi_{j}(r_j)}}
+\end{gather*}
+\]<p>We notice that we have \(C.C\) that pop-up automatically as in the previous treatment:</p>
+\[
+\begin{equation*}
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j}\right] = \sum_{i}^{N}\sum_{j}^{N}\left[\bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j} + \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j} + C.C \right]
+\end{equation*}
+\]<p>After this we are arrive to the exchange term, and with the same treatment:</p>
+\[
+\begin{align*}
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_j\varphi_i}\hat{h}_2\ket{\varphi_i\varphi_j}\right] &= \delta\left[\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)}\right] \\
+    &=  \sum_{i}^{N}\sum_{j}^{N} \textcolor{green}{\bra{\delta\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)} }\\
+    & + \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_j)\delta\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)} \\
+    & + \sum_{i}^{N}\sum_{j}^{N}\textcolor{green}{\bra{\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\delta\varphi_{j}(r_i)\varphi_{i}(r_j)} }\\
+    & + \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\delta\varphi_{i}(r_j)}
+\end{align*}
+\]<p>I highlighted the corresponding lines to show the trick!</p>
+\[
+\begin{align*}
+    \bra{\delta\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)} &=\underset{\mathbb{R}^{6N}}{\int} \delta\varphi_{i}^*(r_j)\varphi_{j}^*(r_i)\hat{h}_2(r_i, r_j)\varphi_{j}(r_i)\varphi_{i}(r_j) dr_idr_j \\
+    &=  \left[\underset{\mathbb{R}^{6N}}{\int} \delta\varphi_{i}(r_j)\varphi_{j}(r_i)\hat{h}_2(r_i, r_j)\varphi_{j}^*(r_i)\varphi_{i}^*(r_j) dr_idr_j \right]^* \\
+    &=  \left[\underset{\mathbb{R}^{6N}}{\int} \varphi_{j}^*(r_i)\varphi_{i}^*(r_j)\hat{h}_2(r_i, r_j) \delta\varphi_{i}(r_j)\varphi_{j}(r_i) dr_idr_j \right]^*
+\end{align*}
+\]<p>Since \(\{r_i;r_j\}\) are \(dummy\) variables, the integral value doesn&rsquo;t change if we swap the indices. Also, the operator \(\hat{h}_2\) is invariant by changing the order (\(\hat{h}_2\) represent a coulomb interaction ):</p>
+\[
+\begin{align*}
+    \underset{\mathbb{R}^{6N}}{\int} \varphi_{j}^*(r_i)\varphi_{i}^*(r_j)\hat{h}_2(r_i, r_j) \delta\varphi_{i}(r_j)\varphi_{j}(r_i) dr_idr_j &= \underset{\mathbb{R}^{6N}}{\int} \varphi_{i}^*(r_j)\varphi_{j}^*(r_i)\underbrace{\hat{h}_2(r_j, r_i)}_{\equiv\ \hat{h}_2(r_i,r_j)} \delta\varphi_{j}(r_i)\varphi_{i}(r_j) dr_idr_j\\
+    &= \bra{\varphi_{i}(r_j)\varphi_{j}(r_i)}\hat{h}_2(r_i,r_j)\ket{\delta\varphi_{j}(r_i)\varphi_{i}(r_j)}
+\end{align*}
+\]<p>Hence, we can write in more condensed way as before:</p>
+\[
+\begin{align*}
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] &= \sum*{i}^{N}\sum*{j}^{N} \bra{\delta\varphi*{i}(r_j)\varphi*{j}(r*i)}\hat{h}\_2(r_i, r_j)\ket{\varphi*{j}(r*i)\varphi*{i}(r*j)}\\ &+ \sum*{i}^{N}\sum*{j}^{N} \bra{\varphi*{i}(r*j)\delta\varphi*{j}(r*i)}\hat{h}\_2(r_i, r_j)\ket{\varphi*{j}(r*i)\varphi*{i}(r_j)} \\
+&+ C.C
+\end{align*}
+\]<p>Now we will omit the notation \(\varphi_i(r_j)\) :</p>
+\[
+\begin{equation*}
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] =\sum*{i}^{N}\sum*{j}^{N} \left[ \bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + C.C \right]
+\end{equation*}
+\]<p>We are almost there! Lets write all the terms:</p>
+\[
+\begin{align*}
+    \delta F &= \sum_i^N\Big[ \bra{\delta\varphi_i}\hat{h}_1\ket{\varphi_i} \\ 
+    &+ \textcolor{green}{\frac{1}{2}} \sum_{j}^{N}\big[ \bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j} + \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j}\\    
+    &- \bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} - \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} \big]\\
+    &- \sum_j^N \lambda_{i,j}\langle{\delta\varphi_i}|\varphi_j\rangle \Big]\\
+    &+ C.C 
+\end{align*}
+\]<p>It is not obvious, and the following argument that I rise here may be naive! but the factor of half disappear. Why? We can justify it by the interchanging the indices \(i\ \&\ j\) order, or we say at some point of the summation; the states are reached twice! At this point, it is more proper and urgent! to write the last equation in its integral form:</p>
+\[
+\begin{align*}
+    \delta F &= \sum_i^N \Big\{ \underset{\mathbb{R}^{6N}}{\int} \delta \varphi^*_i(r_i)\hat{h}_1(r_i)\varphi_i(r_i)dr_i^2\\
+    &+ \sum_j^N  \Big[\underset{\mathbb{R}^{6N}}{\int} \delta \varphi^*_i(r_i)\varphi^*_j(r_j)\hat{h}_2(r_i,r_j)\varphi_i(r_i)\varphi_j(r_j)dr_idr_j  \\
+    &- \underset{\mathbb{R}^{6N}}{\int} \delta \varphi^*_i(r_j)\varphi^*_j(r_i)\hat{h}_2(r_i,r_j)\varphi_j(r_i)\varphi_i(r_j)dr_idr_j \Big] \\
+    &- \sum_j^N \lambda_{i,j}\underset{\mathbb{R}^{6N}}{\int}\delta \varphi^*_i(r_i)\varphi_j(r_j)dr_idr_j \Big\}\\
+    & + C.C 
+\end{align*}
+\]<p>Now we have our final \(action\) expression (\(F\)) of our system, we take the derivative of \(F\) with respect to some \(k^{th}\) bra (\(\bra{\delta\varphi_k} \equiv \varphi^*_k\)). Notice that \(\frac{\delta C.C}{\delta\varphi} = 0\) (the reason for choosing the \(bra\) over the \(ket\) will be obvious at the end!).</p>
+\[
+\begin{align*}
+    \frac{\delta F}{\delta \varphi_k^*} &=  \underset{\mathbb{R}^{3N}}{\int} \hat{h}_1(r_k)\varphi_k(r_k)dr_k\\
+    &+ \sum_j^N  \Big[\underset{\mathbb{R}^{6N}}{\int} \varphi^*_j(r_j)\hat{h}_2(r_k,r_j)\varphi_k(r_k)\varphi_j(r_j)dr_kdr_j  \\
+    &- \underset{\mathbb{R}^{6N}}{\int} \varphi^*_j(r_k)\hat{h}_2(r_k,r_j)\varphi_j(r_k)\varphi_k(r_j)dr_kdr_j \Big] \\
+    &- \sum_j^N \lambda_{j}\underset{\mathbb{R}^{3N}}{\int}\varphi_j(r_j)dr_j 
+\end{align*}
+\]<p>The idea of factoring the \(ket\) is just to re-write our expression in Schrodinger-like form, and it&rsquo;s not rigorous from the mathematical point of view! Hence, Factoring out the \(\ket{\varphi_k}\) gives:</p>
+\[
+\begin{gather*}
+     \underset{\mathcal{R}^{3N}}{\int} \Big\{ \hat{h}_1(r_k) + \sum_j^N  \Big[\underset{\mathcal{R}^{3N}}{\int} \varphi^*_j(r_j)\hat{h}_2(r_i,r_j)\varphi_j(r_j)dr_j - \underset{\mathbb{R}^{3N}}{\int} \varphi^*_j(r_i)\hat{h}_2(r_i,r_j)\varphi_k(r_j)dr_j \Big] \Big\}\varphi_k(r_k)dr_k= \\
+    = \underset{\mathcal{R}^{3N}}{\int}\sum_j^N \lambda_{j}\varphi_j(r_j)dr_j = \underset{\mathcal{R}^{3N}}{\int}\sum_j^N \lambda_{k}\varphi_k(r_k)dr_k 
+\end{gather*}
+\]<p>Now we can go back to \(bra-ket\) notation without confusion:</p>
+\[
+\begin{equation*}
+    \Big[\hat{h}_1 + \sum_{j}^{N}( \hat{J}_j - \hat{K}_j )\Big]\ket{\varphi_k}= \sum_k^N \lambda_{k}\ket{\varphi_k}
+\end{equation*}
+\]<p>This is the why we choose \(bra\) over \(ket\), to end-up with system of Schrodinger-like equations! for which \(\hat{J}_i\) is an integral operator stand for the classical interaction of an electron distributions given by \(|\varphi_j|^2\) and is called the \textbf{direct term}. While \(\hat{K}_j\) called the \textbf{exchange operator}, has no classical analogue and it is a direct result of the $antisymmetry$ property of the wavefunction. The Fock operator is given by:</p>
+\[
+\begin{equation}
+\hat{F} = \hat{h}_1 + \sum_{j}^{N}( \hat{J}_j - \hat{K}_j )
+\end{equation}
+\]<p>The problem is reduced into finding the eigenvalues of the following set of equations:</p>
+\[
+\begin{equation}
+\hat{F}\ket{\varphi_k}=\varepsilon_k\ket{\varphi_k}
+\end{equation}
+\]<p>For which the solutions \(\varepsilon_k\) hold the new identity of the Lagrange multipliers.</p>
+<aside>
+🗣 Although it’s tempting to interpret the eigenvalues as the energy levels of an \(\textbf{interacting system}\), this is in fact \(\underline{not\ justified}\)  because the single-electron picture is \(\textbf{not correct}\). However, if interpreted correctly the \(\textbf{Hartree-Fock}\) eigenvalues do correspond to certain physical entities. 
+For instance, there exist \(\textbf{Koopman’s theorem}\), stating that each eigenvalue of the \(\textbf{Fock}\) operator gives the energy required to remove an electron from the corresponding single-electron state. And, similarly the energy required to add an electron to orbital "\(n\)" can be proven to be given by \(+\ \varepsilon_n\).
+</aside>
+<h2 id="224-koopmans-theorem--the-ionization-energy">2.2.4 KOOPMAN&rsquo;S THEOREM &amp; The Ionization energy</h2>
+<p><a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></p>
+<p>In this section we use \(Koopman's\ theorem\) to give an insight interpretation to the eigenenergies \(\varepsilon_k$ we find in the previous equation. We will consider two system with \((N-1)\) and \(N\) electrons respectively. For which the system of \(N-1\) electron is missing one electron on some orbital &ldquo;\(n\)&rdquo;. Also, beside omitting the spin orbitals degrees of freedom, we postulate that the orbitals are unchanged during this process.
+We start by writing the \(HF\) energy of both system:</p>
+\[
+\begin{gather*}
+    E_{HF}^{N-1} = \sum_{k\neq n}^N \bra{\varphi_k}\hat{h}_1\ket{\varphi_k} + \frac{1}{2} \sum_{k \neq n}^{N}\sum_{j \neq n}^{N} \Big[\bra{\varphi_k\varphi_j}\hat{h}_2\ket{\varphi_k\varphi_j} - \bra{\varphi_k\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_k}\Big] \\
+    E_{HF}^{N} = \sum_{k}^N \bra{\varphi_k}\hat{h}_1\ket{\varphi_k} + \frac{1}{2} \sum_{k }^{N}\sum_{j}^{N} \Big[\bra{\varphi_k\varphi_j}\hat{h}_2\ket{\varphi_k\varphi_j} - \bra{\varphi_k\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_k}\Big] 
+\end{gather*}
+\]<p>Notice that for first line we do not have the &ldquo;n&rdquo; orbital in our sum. Now, we evaluate the difference \(E_{HF}^{N-1}-E_{HF}^{N}\) term by term through the full expansion of both summations:</p>
+\[
+\begin{align*}
+    \Delta E_{HF} &= -\bra{\varphi_n}\hat{h}_1\ket{\varphi_n} \\
+    &-\frac{1}{2}\sum_{j}^{N}\Big[ \bra{\varphi_n\varphi_j}\hat{h}_2\ket{\varphi_n\varphi_j} - \bra{\varphi_n\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_n} \Big]\\
+    &- \frac{1}{2}\sum_{k}^{N}\Big[ \bra{\varphi_k\varphi_n}\hat{h}_2\ket{\varphi_k\varphi_n} - \bra{\varphi_k\varphi_n}\hat{h}_2\ket{\varphi_n\varphi_k} \Big]
+\end{align*}
+\]<p>Since the indices \(k\) and \(j\) are irrelevant (\(k\equiv j\)), and by make use of the identity \(\bra{f_1f_2}\hat{A}\ket{f_3f_4} = \bra{f_2f_1}\hat{A}\ket{f_4f_3}\), we get:</p>
+\[
+\begin{gather*}
+    \Delta E_{HF} = - \bra{\varphi_n}\hat{h}_1\ket{\varphi_n} -  \sum_{j}^{N} \Big[ \bra{\varphi_j\varphi_n}\hat{h}_2\ket{\varphi_j\varphi_n} - \bra{\varphi_j\varphi_n}\hat{h}_2\ket{\varphi_n\varphi_j}\Big]
+\end{gather*}
+\]<p>The last equation is nothing less that the negative eigenenergy of the \(\textbf{Fock}\) operator on the orbital &ldquo;n&rdquo;:</p>
+\[
+\begin{gather*} - \bra{\varphi_n}\hat{F}\ket{\varphi_n} = - \varepsilon_n
+\end{gather*}
+\]<aside>
+🗣 \(\textbf{Koopmans’ theorem}\), states that each eigenvalue of the \(\textbf{Fock}\) operator gives the energy required to remove an electron from the corresponding single-electron state. And, similarly the energy required to add an electron to orbital "n" can be proven to be given by \(+\ \varepsilon_n\).
+</aside>
+<h2 id="225-hartree-fock-roothaan-go-to-toc">2.2.5 Hartree-Fock-Roothaan <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>One of the attempt to solve the \(\textbf{HF}\) equation was done in 1951 by \(\textbf{Roothaan}\). Clemens C. J. Roothaan was a Dutch physicist and chemist known for his development of the self-consistent field theory of molecular structure<sup>2</sup>. For a quick read brows the <a href="https://en.wikipedia.org/wiki/Roothaan_equations" target="_blank" rel="noopener">Roothaan equation</a>
+.</p>
+<p><sup><b>2</b></sup>: <a href="https://en.wikipedia.org/wiki/Clemens_C._J._Roothaan" target="_blank" rel="noopener">Wikipedia-Bibliography</a>
+</p>
+<h1 id="3-the-many-body-problem-as-electron-density-dependence-go-to-toc">3 The many-body Problem as electron density dependence <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h1>
+<p>In this section we will rewrite the Hamiltonian as function of the electron density. Again we will treat the Hamiltonian as a spin-less problem. This is the core idea behind density dunctional theory where the function we are interested in take another function and return an output a.k.a number (\(f \longrightarrow I[f]\)).</p>
+<center><img src="/images/blogs/DFT_BottomUP/functional_illustration.png"></center>
+<p>But first we need to write the later entity \(n(r)\). So to start we define \(n(r_1)\) the electron density of finding an electron at position \(r_1\) while the rest of electrons set are at positions \(\{r_2,r_3, \dots, r_N\}\) as following:</p>
+\[
+\begin{gather}
+\hat{n}(r_1) = \delta (r-r_1) \\
+n(r_1) = \bra{\Psi(r_1, r_2, \dots, r_N)}\hat{n(r_1)}\ket{\Psi(r_1, r_2, \dots, r_N)} \\
+n(r_1) = \underset{\mathbb{R}^3}{\int} \dots \underset{\mathbb{R}_N^3}{\int} \Psi^*(r_1, r_2, \dots, r_N) \delta (r-r_1) \Psi(r_1, r_2, \dots, r_N) dr_1dr_2\dots dr_N
+\end{gather}
+\]<p>First thing to notice is that we can write the product of the \(bra-ket\) function as the norm squared \(|\Psi(r_1, r_2, \dots, r_N)|^2\) (the operator \(\hat{n}(r_1)\) does not acts on the wavefunction) which yields:</p>
+\[
+\begin{gather*}
+    n(r_1) = \underset{\mathbb{R}_N^3}{\int} \dots \underbrace{\Big(\underset{\mathbb{R}^3}{\int} \delta (r-r_1) |\Psi(r_1, r_2, \dots, r_N)|^2 dr_1\Big)}_{}dr_2\dots dr_N\\
+    n(r_1) = \underset{\mathbb{R}_2^3}{\int}\dots\underset{\mathbb{R}_N^3}{\int} |\Psi(r, r_2, \dots, r_N)|^2 dr_2\dots dr_N
+\end{gather*}
+\]<p>By following the same reasoning the electron density of many-body system \(n(r)\) is given by the sum of all individual electrons densities(the definition \(n(r)= \sum_i^N n(r_i)\), is justified by seeing the operator of \(\hat{n}(r)\) as a linear one):</p>
+\[
+\begin{gather*}
+n(r)= \underset{\mathbb{R}^{3(N-1)}}{\int} |\Psi(r, r_2, \dots, r_N)|^2 dr_2\dots dr_N + \underset{\mathbb{R}^{3(N-1)}}{\int} |\Psi(r_1, r, \dots, r_N)|^2 dr_1dr_3\dots dr_N + \dots
+\end{gather*}
+\]<p>Since the propriety of the Norm squared of the wavefunction does not change with its arguments shuffled(\(|\Psi(r_1, \dots r_i,r_j,\dots, r_N)|^2 = |\Psi(r_1, \dots r_j,r_i,\dots, r_N)|^2\)). It is obvious that we end-up having \(N\) equal terms, because of the indistinguishable nature of electrons:</p>
+\[
+\begin{gather}
+n(r)= N \underset{\mathbb{R}^{3(N-1)}}{\int} |\Psi(r, r_2, \dots, r_N)|^2 dr_2\dots dr_N
+\end{gather}
+\]<p>If we integrate the last equation over the remaining spaces we get the electrons number(here we consider a normalized wavefunction):</p>
+\[
+\begin{equation}
+N = \int drn(r)
+\end{equation}
+\]<h2 id="31-the-electrons-ions-interaction-go-to-toc">3.1 The electrons-ions interaction <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>Previously we had established the electrons-ions interaction, now we will introduce the electrons density \(n(r)\). We start as always by taking the expectation values of the later coulomb interaction:</p>
+\[
+\begin{gather*}
+\bra{\Psi(r_1, \dots, r_N)}\hat{V}_{e-n}\ket{\Psi(r_1, \dots, r_N)}\\
+    =\sum_i^{N} \underset{\mathbb{R}^{3N}}{\int} \Psi^*(r_1, \dots, r_N)v_{e-n}(r_i)\Psi(r_1, \dots, r_N)dr_1\dots dr_N\\
+    = -\sum_i^{N}\sum_j^{N_n}\underset{\mathbb{R}^{3N}}{\int} \Psi^*(r_1, \dots, r_N)\frac{Z_j}{|r_i-R_j|}\Psi(r_1, \dots, r_N)dr_1\dots dr_N
+\end{gather*}
+\]<p>The operator \(\hat{V}_{e-n}\) allows for the appearance of the Norm squared of the wavefunction. Then we expand the summation over the electrons:</p>
+\[
+\begin{align*}
+    \langle\hat{V}_{e-n}\rangle_{\Psi} &= -\sum_j^{N_n} \Big[\underset{\mathbb{R}^{3}}{\int} \frac{Z_j}{|r_1-R_j|}|\Psi(r_1, \dots, r_N)|^2dr_1\dots dr_N+ \dots\\
+    & + \underset{\mathbb{R}^{3}}{\int} \frac{Z_j}{|r_N-R_j|}|\Psi(r_1, \dots, r_N)|^2dr_1\dots dr_N\big]\\
+    &=\sum_j^{N_n} \Big[\underset{\mathbb{R}^{3}}{\int} \frac{Z_j}{|r_1-R_j|}dr_1\underset{\mathbb{R}^{3(N-1)}}{\int} |\Psi(r, \dots, r_N)|^2dr_2\dots dr_N+ \dots\\
+    &+\underset{\mathbb{R}^{3}}{\int} \frac{Z_jdr_1}{|r_N-R_j|} dr_N\underset{\mathbb{R}^{3(N-1)}}{\int} |\Psi(r_1, \dots, r_{N-1}, r)|^2dr_1\dots dr_{N-1}\Big]
+\end{align*}
+\]<p>The factor of each individual coulomb interaction integral is the same! Beside the same trick of shuffling the arguments and changing re-arranging the indices, we use the dummy variables \(r_i \longrightarrow r\) we rewrite:</p>
+\[
+\begin{gather*}
+\langle\hat{V}_{e-n}\rangle_{\Psi} = -N\sum_j^{N_n}\underset{\mathbb{R}^{3}}{\int} \frac{Z_j}{|r-R_j|}dr\underbrace{\underset{\mathbb{R}^{3(N-1)}}{\int} \Psi(r, \dots, r_{N})dr_2\dots dr_{N}}\_{n(r)/N}
+\end{gather*}
+\]<p>We notice the appearance of the electron density that we define it previously, hence:</p>
+\[
+\begin{equation}
+\langle\hat{V}_{e-n}\rangle_{\Psi} = \int V_{e-n}(r)n(r)dr
+\end{equation}
+\]<h2 id="32-the-electrons-electrons-interaction-go-to-toc">3.2 The electrons-electrons interaction <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>Using the same manner that we did in the last section we will introduce the electron density. Note that it is not quite the same quantity \(n(r)\)! Within the electrons-electrons interaction. And the starting point is always the avearage value:</p>
+\[
+\begin{gather*}
+    \bra{\Psi(r_1, \dots, r_N)}\hat{V}_{e-e}\ket{\Psi(r_1, \dots, r_N)}\\
+    = \frac{1}{2}\sum_i^{N}\sum_{j\neq i}^{N}\underset{\mathbb{R}^{3N}}{\int} \Psi^*(r_1, \dots, r_N)v_{e-e}(r_i,r_j)\Psi(r_1, \dots, r_N)dr_1\dots dr_N\\
+    = \frac{1}{2} \sum_i^{N} \sum_{j\neq i}^{N} \underset{\mathbb{R}^{3N}}{\int} \frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_i-r_j|}dr_1\dots dr_N
+\end{gather*}
+\]<p>We will expend over the \(i\) summation:</p>
+\[
+\begin{gather*}
+    2\langle\hat{V}_{e-e}\rangle_{\Psi}=\sum_{j\neq i}^{N_n}\Big[\underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_j|}dr_2\dots dr_N \\
+    + \underset{\mathbb{R}^{3}}{\int}dr_2  \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^{*}(r_1, \dots, r_N)|^2}{|r_2-r_j|}dr_1\dots dr_N + \dots \\
+    + \underset{\mathbb{R}^{3}}{\int}dr_N  \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^{*}(r_1, \dots, r_N)|^2}{|r_N-r_j|}dr_1\dots dr_{N-1}\Big]
+\end{gather*}
+\]<p>Lets expand the first term over the summation \(j\neq i\):
+</p>
+\[
+\begin{gather*}
+\sum_{j\neq i}^{N_n}\underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_j|}dr_2\dots dr_N=\underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_2|}dr_2\dots dr_N  \\ 
+    + \underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_3|}dr_2\dots dr_N + \dots \\
+    + \underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_N|}dr_2\dots dr_N\\
+=  \underset{\mathbb{R}^{6}}{\int}\frac{dr_1dr_2}{|r_1-r_2|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r_1, \dots, r_N)|^2dr_3\dots dr_N  \\
+    + \underset{\mathbb{R}^{6}}{\int}\frac{dr_1dr_3}{|r_1-r_3|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r_1, \dots, r_N)|^2dr_2\dots dr_N  + \dots\\
+    + \underset{\mathbb{R}^{6}}{\int}\frac{dr_1dr_{N}}{|r_1-r_N|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r_1, \dots, r_N)|^2dr_2\dots dr_{N-1} 
+\end{gather*}    
+\]<p>We apply a dummy variable changing \(r_1\longrightarrow r\) and \(r_j\longrightarrow r'\):</p>
+\[
+\begin{gather*}
+    \sum_{j\neq i}^{N_n}\underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_j|}dr_2\dots dr_N  = \underset{\mathbb{R}^{6}}{\int}\frac{drdr'}{|r-r'|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r, r', \dots, r_N)|^2dr_3\dots dr_N + \dots\\
+    + \underset{\mathbb{R}^{6}}{\int}\frac{drdr'}{|r-r'|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r, \dots, r')|^2dr_3\dots dr_N
+\end{gather*}
+\]<p>Basically the integral over the \(\mathbb{R}^{3(N-2)}\) space is the same, and we have \((N-1)\) term. And again the shuffling propriety of the wave function:</p>
+\[
+\begin{gather*}
+    \sum_{j\neq i}^{N_n}\underset{\mathbb{R}^{3}}{\int}dr_1 \underset{\mathbb{R}^{3(N-1)}}{\int}\frac{|\Psi^*(r_1, \dots, r_N)|^2}{|r_1-r_j|}dr_2\dots dr_N  = (N-1)\underset{\mathbb{R}^{6}}{\int}\frac{drdr'}{|r-r'|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r, r', \dots, r_N)|^2dr_3\dots dr_N
+\end{gather*}
+\]<p>We treat each \(N\) remaining term the same, and we get:</p>
+\[
+\begin{gather*}
+\langle\hat{V}_{e-e}\rangle_{\Psi} = \frac{N(N-1)}{2}\underset{\mathbb{R}^{6}}{\iint}\frac{drdr'}{|r-r'|} \underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r, r', \dots, r_N)|^2dr_3\dots dr_N
+\end{gather*}
+\]<p>Now we define the new pair electron density as following:</p>
+\[
+\begin{equation}
+n^{(2)}(r,r') = N(N-1)\underset{\mathbb{R}^{3(N-2)}}{\int}|\Psi^*(r, r', \dots, r_N)|^2dr_3\dots dr_N
+\end{equation}
+\]<aside>
+ℹ️ Which describe the density of two pair of electrons, one of them is seen as the center of the mass of the left \(N-1\) electrons system.
+</aside>
+<p>Finally the electrons-electrons interaction is reduced into:</p>
+\[
+\begin{equation*}
+\langle\hat{V}_{e-e}\rangle_{\Psi} =\iint drdr' v_{e-e}(r,r')n^{(2)}(r, r')
+\end{equation*}
+\]<p>Here we will re-write the new raised quantity as an expansion of the usual density:</p>
+\[
+\begin{equation*}
+n^{(2)}(r,r') = n(r)\times n(r') + n^{(2)}_{corr}(r,r')
+\end{equation*}
+\]<p>Which lead to:</p>
+\[
+\begin{equation}
+\langle\hat{V}_{e-e}\rangle_{\Psi} =\iint drdr' v_{e-e}(r,r')n(r)n(r') + E_c
+\end{equation}
+\]<p>The \(E_c\) is a correction term.</p>
+<h2 id="33-the-kinetic-energy-go-to-toc">3.3 The Kinetic Energy <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>Yet, we did not write our Energy as a functional of the density \(n(r)\). We still have the Kinetic term which is hard to deal with since we have the operator \(\nabla^2\) that act on the wavefunction (\(\Psi\)). In order to tackle the kinetic energy, we make one of the key assumptions of density functional theory. \(\textbf{We assume that the
+density can be written as the sum norm squares of a collection of single-particle orbitals}\):</p>
+\[
+\begin{equation*}
+n(r) = \sum_i^N |\varphi_i(r)|^2
+\end{equation*}
+\]<p>These orbitals are called \(\textbf{Kohn-Sham orbitals}\) and they are initially completely unspecified in much the same way as in the orbitals in the Slater determinant in the \(\textbf{Hartree-Fock}\) formalism. The above form cannot really be considered an
+approximation. It simply says that instead of the full many-particle system we consider an auxiliary system of single-particle orbitals that have the same ground state density as the real system. Hence the Kinetic energy can be written in term to the KS orbitals to a correction term; as following:</p>
+\[
+\begin{equation}
+T = -\frac{1}{2}\sum_i^N\int \varphi_i(r)\nabla^2_r \varphi_i(r)dr + E_x
+\end{equation}
+\]<aside>
+💡 The idea behind the \textbf{KS-orbitals} is to let introduce the density indirectly especially when it comes to the variation principal. The global idea is that the Kinetic energy had been linked to the density through \(\textbf{KS-orbitals}\).
+</aside>
+<h2 id="34-introducing-the-exchange-correlation-term-go-to-toc">3.4 Introducing the Exchange Correlation term <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>In the following we will refer to the paper of \(\textsc{Kohn $\&$ Sham}\)<sup><b>3</b></sup>. As it was reported in the later paper, the ground state energy has the following form:</p>
+\[
+\begin{equation}
+E[n(r)]= -\frac{1}{2}\sum_i^N\int \varphi_i(r)\nabla^2_r \varphi_i(r)dr + \iint \frac{drdr'}{|r-r'|}n(r)n(r') + \int V_{e-n}(r)n(r)dr + E\_{xc}[n(r)]
+\end{equation}
+\]<p>Where:</p>
+\[
+\begin{equation}
+E_{xc}[n(r)] = \int dr\varepsilon*{xc}[n(r)]n(r)
+\end{equation}
+\]<p>Where \(\varepsilon\_{xc}\) is the exchange and correrrelation energy rep electron of a uniform electron gas of density \(n(r)\)<sup><b>3</b></sup>.</p>
+<p>The origin of this term is the difference between a system of N interacting and noninteracting particles. More specifically:</p>
+<ul>
+<li>\(\textbf{Exchange}\) energy is the Pauli repulsion, omitted in the Hartree term;</li>
+<li>\(\textbf{Correlation}\) energy is the repulsion between electrons.</li>
+</ul>
+<p><sup><b>3</b></sup> <a href="https://doi.org/10.1103/PhysRev.140.A1133" target="_blank" rel="noopener">Walter Kohn and Lu Jeu Sham. Self-consistent equations including exchange and correlation effects. Physical review, 140(4A):A1133, 1965</a>
+</p>
+<h1 id="35-the-hohenberg-kohn-theorem-go-to-toc">3.5 THE HOHENBERG-KOHN THEOREM <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h1>
+<p><strong>Theorem I:</strong></p>
+<aside>
+📜 The external potential \(V_{ext}(r)\) is a unique functional of the density \(n(r)\).
+</aside>
+<center><img src="/images/blogs/DFT_BottomUP/HB-K_TH.png"></center>
+<p><strong>Proof</strong></p>
+<p>Let assume that exist two different external potential \(V*{ext}^{(1)}(r)\) and \(V*{ext}^{(2)}(r)\) that gives rise to the same electrons density for non-degenerate ground state \(n(r)\). Hence, we have two wavefunction for two Hamiltonian:</p>
+\[
+\begin{gather*}
+\langle \hat{H}^{(1)}\rangle_{\psi^{(1)}} = \langle \hat{T}\rangle_{\psi^{(1)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(1)}} + \int n(r)V_{ext}(r)dr \\
+\langle \hat{H}^{(1)}\rangle_{\psi^{(1)}}  < \langle \hat{T}\rangle_{\psi^{(2)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(2)}} + \int n(r)V_{ext}(r)dr\\
+\langle \hat{T}^{(1)}\rangle_{\psi^{(1)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(1)}} < \langle \hat{T}^{(2)}\rangle_{\psi^{(2)}} + \langle \hat{V}_{e-e}\rangle\_{\psi^{(2)}}
+\end{gather*}
+\]<p>In the other hand:</p>
+\[
+\begin{gather*}
+\langle \hat{H}^{(2)}\rangle_{\psi^{(2)}} = \langle \hat{T}\rangle_{\psi^{(2)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(2)}} + \int n(r)V_{ext}(r)dr \\
+\langle \hat{H}^{(2)}\rangle_{\psi^{(2)}}  < \langle \hat{T}\rangle*{\psi^{(1)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(1)}} + \int n(r)V_{ext}(r)dr\\
+\langle \hat{T}^{(2)}\rangle_{\psi^{(2)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(2)}} < \langle \hat{T}^{(1)}\rangle_{\psi^{(1)}} + \langle \hat{V}_{e-e}\rangle_{\psi^{(1)}}
+\end{gather*}
+\]<p>Which is a \(\textbf{Contradiction}!!!\)</p>
+<p><strong>Theorem II:</strong></p>
+<aside>
+📜 A universal functional for the energy $E[n(r)]$ can be defined in terms of the density. The exact ground state is the global minimum value of this functional.
+</aside>
+<p><strong>Proof:</strong></p>
+<p>Let \(E\) be the exact energy of the ground state of our system of \(N\) interacting electron (non-degenerate state), then:</p>
+\[
+\begin{gather*}
+E= \underset{\psi}{\text{min}} \langle \hat{T} + \hat{V}*{e-e} + \hat{V}*{ext}\rangle*{\psi}\\
+E= \underset{\psi}{\text{min}} \Big[ \langle \hat{T} + \hat{V}*{e-e}\rangle*{\psi}+ \langle\hat{V}*{ext}\rangle*{\psi}\Big]\\
+E= \underset{n(r)}{\text{min}} \Big[ \iint drdr' v*{e-e}(r,r')n(r)n(r') + \int n(r)V\_{ext}(r)dr+ G[n(r)]\Big]
+\end{gather*}
+\]<p>Where \(G[n(r)]\) is a universal function of the density:</p>
+\[
+\begin{equation}
+G[n(r)] = \underset{n(r)}{\text{min}} \Big[ T[n(r)] + E\_{xc}[n(r)] \Big]
+\end{equation}
+\]<h1 id="4-kohn-and-sham-equation-derivation-attempt-go-to-toc">4 Kohn and Sham Equation: Derivation attempt! <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h1>
+<p>We will try to re-derive the \(\textbf{KS}\) equation by following the same procedures used in \(\textbf{HF}\) approach. The idea is as simple as the minimization over the wavefunction! But an approximation is needed. As we discussed previously we already write the Energy as functional of the density (i.e: \(E[n(r)]\)); but it was shown that the kinetic energy raise a problem, that it can not be written in terms of the density \(n(r)\), so we consider the \(\textbf{KS}\) orbitals that builds the density from ground i.e: \(n(r)=\sum_i^N |\varphi(r)|^2\), hence the kinetic term can be minimized through the set of these orbitals! that we postulate theirs orthogonality constraints:</p>
+\[
+\begin{gather*}
+\frac{\delta E[n]}{\delta \varphi^*_k(r)} =\frac{\delta}{\delta \varphi^*_k(r)} \Big[ \int n(r)v_{e-N}(r)dr + \iint n(r)v_{e-e}(r,r')n(r')drdr' + G[n] \Big] = 0\\
+\frac{\delta}{\delta \varphi^*_k(r)} \Big[ \int n(r)v_{e-N}(r)dr + \iint n(r)v_{e-e}(r,r')n(r')drdr' + G[n]\\
+-\sum_i^N\varepsilon_i\Big( \int\varphi^*_i(r)\varphi_i(r)dr-1\Big)\Big] = 0
+\end{gather*}
+\]<p>Where \(\varepsilon\) stand for the \(\textbf{Lagrange multiplier}\). The two first terms on the left hand side are easy to manipulate!</p>
+\[
+\begin{gather*}
+\underbrace{\int v_{e-N}(r)\varphi_k(r)dr + \iint v_{e-e}(r,r')n(r')\varphi_k(r)drdr'}*{\int\Theta(r)\varphi_k(r)dr} + \frac{\delta G[n]}{\delta \varphi^*_k(r)} =\\ \frac{\delta }{\delta \varphi^*_k(r)} \sum_i^N\varepsilon_i\Big( \int\varphi^*_i(r)\varphi_i(r)dr-1\Big)
+\end{gather*}
+\]<p>We will try to tackle the universal function \(G[n]\):</p>
+\[
+\begin{gather*}
+\frac{\delta}{\delta \varphi^*_k(r)} G[n] =  \frac{\delta}{\delta \varphi^*_k(r)} \Big[T[n(r)] + E_{xc}[n(r)]\Big] = \frac{\delta}{\delta \varphi^*_k(r)}\Big[-\frac{1}{2}\sum_i^N\int\varphi^*_i(r)\nabla^2_{r_i}\varphi_i(r)dr\Big] + \frac{\delta E_{xc}[n(r)]}{\delta \varphi^*_k(r)}\\
+    -\frac{1}{2}\int \nabla^2_{r_k}\varphi_k(r)dr + \int  \frac{\delta E_{xc}[n(r)]}{\delta n(r')} \frac{\delta n(r')}{\delta \varphi^*_k(r)}\delta(r-r')dr'=-\frac{1}{2}\int \nabla^2_r\varphi_k(r)dr + \int \frac{\delta E_{xc}[n(r)]}{\delta n(r)} \varphi_k(r)dr = \varepsilon_k\int \varphi_k(r)dr
+\end{gather*}
+\]<p>For the \(\textbf{Lagrange multiplier}\) we get:</p>
+\[
+\begin{gather*}
+\frac{\delta }{\delta \varphi^*_k(r)} \sum_i^N\varepsilon_i\Big( \int\varphi^*_i(r)\varphi_i(r)dr-1\Big) = \varepsilon_k\int \varphi_k(r)dr
+\end{gather*}
+\]<p>The final expression called \(\textbf{KS-equation}\) has the foollowing form:</p>
+\[
+\begin{gather}
+\int \Theta(r)\varphi_k(r)dr-\frac{1}{2}\int\nabla^2_{r_k}\varphi(r)dr + \frac{\delta E_{xc}[n(r)]}{\delta n(r)} \varphi_k(r)dr
+\end{gather}
+\]<p>Which is reduced into:</p>
+\[
+\begin{gather}
+\Big[-\frac{1}{2}\nabla^2_{r_k} + \Theta(r) + V_{xc}(r)\Big] \varphi_k(r) = \varepsilon_k\varphi_k(r)
+\end{gather}
+\]<p>The problem is now can be solved exactly if we know the function \(V_{xc}=\frac{\delta E_{xc}[n(r)]}{\delta n(r)}\)!</p>
+<aside>
+✍️ The key for deriving the \textbf{KS-equation} is knowing the following :
+\[
+\begin{gather*}
+\frac{\delta h[f(x)]}{\delta f(x)} = \int \frac{h[f(x)]}{g(x')}\frac{g(x')}{f(x)} dx
+\end{gather*}
+\]<p>Also, the ratio \(\frac{g(x')}{f(x)}\) in our case is evaluated to be \(f(x)\delta(x-x')\), where \(f(x)\) is the \textbf{KS-wavefunction} &ldquo;\(\varphi(r)\)&rdquo;.</p>
+</aside>
+<h1 id="5-solving-ks-equation-go-to-toc">5 Solving KS equation <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h1>
+<p>In this section we will see how we can solve \(\textbf{KS-equation}\), but first we will write down the matrix formula equivalent to the Schrodinger-like equation; using the <strong>Planewave expansion</strong>. Without further ado, we start by defining our wavefunction (i.e: the \(\textbf{KS-orbitals}\)) as following:</p>
+\[
+\begin{gather*}
+\varphi_i(\overrightarrow{r})= \frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q} e^{j\overrightarrow{q}\cdot\overrightarrow{r}}
+\end{gather*}
+\]<p>Where, \(\Omega\) is the volume of the real space where we are working in, and \(c\_{i,q}\) are the Fourier coefficients of the wavefunction. Note, that we are moving to the reciprocal space \({\overrightarrow{q}}\) instead of the real one, which will make \(\textbf{Fourier transform}\) the pillars of this work! For our Hamiltonian that is described by \(\textbf{KS}\) equation will be rewritten as follwing:</p>
+\[
+\begin{gather*}
+\hat{H}_{KS} = \hat{T}_{s} + \hat{V}_{eff}
+\end{gather*}
+\]<p>Where, \(\hat{T}_{s}\) is the single-particle kinetic energy and \(\hat{V}_{eff}\). Where \(\hat{V}_{eff} = \hat{\Theta} + \hat{V}_{xc}\). Is the effective potential which contains the external, \(\textbf{Hartree}\) (i.e: \(\hat{\Theta}\)) and \(\textbf{exchange-correlation}\) (i.e: \(\hat{V}\_{xc}\)) parts. So far we can write the wavefunction in the basis set of \(\{\overrightarrow{q}\}\) as following:</p>
+\[
+\begin{gather*}
+\varphi_i(\overrightarrow{r})= \frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q} \ket{\overrightarrow{q}}
+\end{gather*}
+\]<p>Now to get the eigenvalues \(\varepsilon_i\) we take the evaluate the following product:</p>
+\[
+\begin{gather*}
+\bra{\overrightarrow{q'}}\hat{H}_{KS}\varphi_i(r) = \bra{\overrightarrow{q'}}\Big[\hat{T}_{S} + \hat{V}_{eff}\Big]\varphi_i(r)\\
+\frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\bra{\overrightarrow{q'}}\hat{H}_{KS} \ket{\overrightarrow{q}} = \frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\varepsilon_i\underbrace{\bra{\overrightarrow{q'}}\ket{\overrightarrow{q}} }_{\delta_{q';q}}
+\end{gather*}
+\]<p>Which yield to :</p>
+\[
+\begin{gather*}
+\underline{\underline{H}}\cdot \underline{\underline{C}}=\varepsilon_i\cdot\underline{\underline{C}}
+\end{gather*}
+\]<p>where \(\underline{\underline{H}}\) is the Hamiltonian in matrix representation and \(\underline{\underline{C}}\) is a vector of coefficients. Now, we will work out the kinetic energy term:</p>
+\[
+\begin{gather*}
+\bra{\overrightarrow{q'}}\hat{T}_{s}\ket{\overrightarrow{q}} = -\frac{1}{2}\bra{\overrightarrow{q'}}\Big(\frac{d^2}{dr^2}\underbrace{\ket{\overrightarrow{q}}}_{\equiv e^{j\overrightarrow{q}\cdot\overrightarrow{r}}}\Big) =\frac{1}{2}||\overrightarrow{q}||^2\delta_{q';q}  
+\end{gather*}
+\]<p>In the planewave representation, the kinetic energy term assumes an extremely simple, diagonal form. Now we proceed with effective potential, since \(V_{eff}\) has the periodicity of the lattice and therefore the only allowed Fourier components are those with
+the wavevectors in the reciprocal space of the crystal:</p>
+\[
+\begin{gather*}
+V_{eff}(\overrightarrow{r})= \sum_n \bar{V}_{eff}(\overrightarrow{G}_n)e^{j\overrightarrow{G}_n\cdot\overrightarrow{r}}\\
+\text{Where:\ } \bar{V}_{eff}(\overrightarrow{G}_n) = \frac{1}{\Omega_{cell}}\int_{\Omega_{cell}}V_{eff}(\overrightarrow{r})e^{j\overrightarrow{G}_n \cdot\overrightarrow{r}}d\overrightarrow{r}
+\end{gather*}
+\]<p>Performing the same product as previously gives:</p>
+\[
+\begin{gather*}
+\bra{\overrightarrow{q'}}\hat{V}_{eff}\ket{\overrightarrow{q}}=\sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \bra{\overrightarrow{q'}}\ket{\overrightarrow{G}_n+\overrightarrow{q}}= \sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \delta_{||\overrightarrow{q'}-\overrightarrow{q}||;\overrightarrow{G}_n }
+\end{gather*}
+\]<p>By make use of the change in variable, by make \(\overrightarrow{q} = \overrightarrow{k}+\overrightarrow{G}_m\) and \(\overrightarrow{q'} = \overrightarrow{k}+\overrightarrow{G}_m'\), so the wave vectors (\(q\ \&\ q'\)) differ by a reciprocal lattice vector. which brings the Schrodinger-like equation to the \(k\) space:</p>
+\[
+\begin{gather*}
+\sum_m H_{m',m}(\overrightarrow{k})c_{i,m}(\overrightarrow{k})=\varepsilon_ic_{i,m'}(\overrightarrow{k})
+\end{gather*}
+\]<p>In summary, we reduced the problem into the First \(\textbf{Brillouin zone}\) (The primitive cell in the reciprocal space), thanks to \(\textbf{Bloch's theorem}\). Now it is important to see how the \(V_{eff}\) can be written in the \textbf{Fourier Space}. For the sake of notation we denote \(n(\overrightarrow{r})\) the real electron density and \(\rho(\overrightarrow{G})\) it conjugate in the reciprocal space.</p>
+<h2 id="51-the-electron-electron-interaction-hartee-energy-term-go-to-toc">5.1 The electron-electron interaction (Hartee Energy term) <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>We use the same definition of the planewave expension for the electron density:</p>
+\[
+\begin{align*}
+\iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} = \frac{1}{2}\sum_{\overrightarrow{G'}, \overrightarrow{G}}\iint d\overrightarrow{r}d\overrightarrow{r'} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{r'}-\overrightarrow{r}||}e^{j\overrightarrow{G}\cdot\overrightarrow{r}}e^{j\overrightarrow{G'}\cdot\overrightarrow{r'}}
+\end{align*}
+\]<p>We write : \(\overrightarrow{u} = \overrightarrow{r}-\overrightarrow{r'} \longleftrightarrow d\overrightarrow{u} = \overrightarrow{r}\), and in the first exponential we add and subtract \(\overrightarrow{r'}\):</p>
+\[
+\begin{align*}
+\frac{1}{2}\sum\_{\overrightarrow{G'}, \overrightarrow{G}}\iint d\overrightarrow{u}d\overrightarrow{r'} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{u}||}e^{j\overrightarrow{G}\cdot\overrightarrow{u}}e^{j\overrightarrow{r'}\cdot\Big(\overrightarrow{G'}+\overrightarrow{G}\Big)}
+\end{align*}
+\]<p>We separate the independent integral and write \(\underset{\mathbb{R}^3}{\int d\overrightarrow{u}} =2\pi\int_{0}^{\infty}\int_{0}^{\pi} u^2 du sin(\theta) d\theta\):</p>
+\[
+\begin{align*}
+\pi\sum_{\overrightarrow{G'}, \overrightarrow{G}} \rho(\overrightarrow{G'})\rho(\overrightarrow{G}) \underbrace{\int e^{j\overrightarrow{r'}\cdot\Big(\overrightarrow{G'}+\overrightarrow{G}\Big)}  d\overrightarrow{r'} }_{\Omega_{cell}\times \delta(\overrightarrow{G'}-\overrightarrow{G})  }\int_{0}^{\infty}  \Big[\int_{0}^{\pi}   \underbrace{e^{j G\cdot u cos(\theta)} u sin(\theta) d\theta}_{\equiv - \frac{e^{jx}}{G}dx \ |\  x = G\cdot u cos(\theta)\ |\ 1 \langle x \langle -1}\Big]d u\\
+     \iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} = \pi\Omega_{cell}\sum_{\overrightarrow{G'}, \overrightarrow{G}} \rho(\overrightarrow{G'})\rho(\overrightarrow{G})\times \delta(\overrightarrow{G'}-\overrightarrow{G})  \int_{0}^{\infty} \underbrace{\frac{e^{jG\cdot u}}{jG}|_{-1}^{1}}_{2\times \frac{sin(Gu)}{G}} du 
+\end{align*}
+\]<p>The last integral factor it is not a proper integral!</p>
+\[
+\begin{equation*}
+\int_0^\infty \frac{sin(x)}{G^2}dx = \underset{a\longrightarrow \infty}{\lim} \frac{cos(X)}{G^2}\Big|_{a}^0 =\left\{\begin{array}{c}
+0 \\
+2/G^2 \\
+\end{array}\right.
+\end{equation*}
+\]<p>Rigorously the limit does not exist (not unique a.k.a \(\lim\_{x\longrightarrow a} f(x) \neq f(a) \))!</p>
+\[
+\begin{align*}
+\iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} =4\pi\Omega_{cell}\sum\_{\overrightarrow{G'}, \overrightarrow{G}} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{G}||^2}\times \delta(\overrightarrow{G'}-\overrightarrow{G})
+\end{align*}
+\]<p>A further simplification: \(G = -\nu G'\), because the density is a physical measurable quantity, \(\mathcal{F}\{\Phi\}(\omega)=\mathcal{F}\{\Phi\}(-\omega)\), where \(\mathcal{F}\) is Fourier transform and \(\Phi\) physical entity i.e the negative and the positive frequency components are equal [see <em>chapter 8 of Aschroft and Mermin’s &ldquo;Solid State Physics&rdquo;</em>].</p>
+<p>And by considering the propriety : \(\rho(\overrightarrow{G}) = \rho(\overrightarrow{G'})\)</p>
+\[
+\begin{gather}
+\iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} =4\pi\Omega_{cell} \sum_{\overrightarrow{G} }\frac{\rho^2(\overrightarrow{G})}{||\overrightarrow{G}||^2}
+\end{gather}
+\]<h2 id="52-the-electron-electron-interaction-hartee-potential-term-go-to-toc">5.2 The electron-electron interaction (Hartee Potential term) <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>With the same analogy:</p>
+\[
+\begin{align*}
+\int v_{e-n}(\overrightarrow{r})n(\overrightarrow{r})d\overrightarrow{r} &= -\frac{1}{2}\sum_{\overrightarrow{G}} \int d\overrightarrow{r} \frac{\rho(\overrightarrow{G})}{||\overrightarrow{r}-\overrightarrow{R}||} e^{j\overrightarrow{G}\cdot(\overrightarrow{r}-\overrightarrow{R})}e^{j\overrightarrow{G}\cdot\overrightarrow{R}}\\
+& = -\frac{1}{2}\sum_{\overrightarrow{G}} \underset{\mathbb{R}^3}{\int} du e^{j\overrightarrow{G}\cdot\overrightarrow{R}} \frac{\rho(\overrightarrow{G})}{G||\overrightarrow{u}||}e^{j G\cdot u cos(\theta)}d(-G u cos(\theta))\\
+&= -\pi\sum_{\overrightarrow{G}}e^{j\overrightarrow{G}\cdot\overrightarrow{R}} \rho(\overrightarrow{G}) \underbrace{\int_0^\infty \Big[\frac{e^{j G\cdot u cos(\theta)}}{jG}\Big|_\pi^0\Big]du}_{\text{We accept blindly "4/$G^2$" as a result!}}
+\end{align*}
+\]<p>And we ends up by having:</p>
+\[
+\begin{gather*}
+\int v_{e-n}(\overrightarrow{r})n(\overrightarrow{r})d\overrightarrow{r} = - 4\pi\sum_{\overrightarrow{G}}\frac{\rho(\overrightarrow{G})}{||\overrightarrow{u}||^2} e^{j\overrightarrow{G}\cdot\overrightarrow{R}}
+\end{gather*}
+\]<h2 id="53-the-exchange-correlation-term-go-to-toc">5.3 The exchange-correlation term <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a></h2>
+<p>As we have seen before that the last contribution of the effective potential in \(\textbf{KS}\) Hamiltonian is due to the change of <em>exchange-correlation</em> energy function over a small variation in the electron density (i.e: \(V\_{xc}(\overrightarrow{r}) = \frac{\delta E[n(\overrightarrow{r})]}{\delta n(\overrightarrow{r})}\)). We will use the expression given by <sup><b>3</b></sup> for the later term, and since we can exchange the derivation of a function over the integral like the case with regular functions, note that we could derive firts and perform the Fourier decomposition, and we ends up by having two terms:</p>
+\[
+\begin{align*}
+    V*{xc}(\overrightarrow{r}) &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[ \int d\overrightarrow{r} \rho(\overrightarrow{r})\bar{\varepsilon}_{xc}[n(\overrightarrow{r})] \Big]\\
+    &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \int d\overrightarrow{r} \rho(\overrightarrow{G})e^{j\overrightarrow{G}\cdot\overrightarrow{r}}\bar{\varepsilon}_{xc}(\overrightarrow{G'})e^{j\overrightarrow{G'}\cdot\overrightarrow{r}} \Big]\\
+    &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}*{xc}(\overrightarrow{G'}) \int e^{j(\overrightarrow{G}+\overrightarrow{G'})\cdot\overrightarrow{r}}d\overrightarrow{r}\Big]\\
+    &= \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}*{xc}(\overrightarrow{G'}) \times \delta(\overrightarrow{G}-\overrightarrow{G'})\Big] = \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G}} \rho(\overrightarrow{G})\bar{\varepsilon}_{xc}(\overrightarrow{G}) \Big]
+\end{align*}
+\]<p><sup><b>3</b></sup> <a href="https://doi.org/10.1103/PhysRev.140.A1133" target="_blank" rel="noopener">Walter Kohn and Lu Jeu Sham. Self-consistent equations including exchange and correlation effects. Physical review, 140(4A):A1133, 1965</a>
+</p>
+<p>At this stage we shall say that we manage to perform <strong>Bottom-up synthesis of Density Functional Theory(DFT)</strong>.</p>
+<p>Thank you for reaching this points.</p>
+
+      </article>
+
+      
+
+
+
+
+    </div>
+  </div>
+</div>
+
+</main>
+<footer class="flex flex-none justify-center">
+<section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+    <a href="https://github.com/anouarDELENDA" target="_blank" title="Github" class="flex flex-row mr-2">
+      <span class="hidden">Github</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://linkedin.com/in/anouar-akacha-delenda-0602061b1" target="_blank" title="LinkedIn" class="flex flex-row mr-2">
+      <span class="hidden">LinkedIn</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+   <path d="M8 11l0 5"></path>
+   <path d="M8 8l0 .01"></path>
+   <path d="M12 16l0 -5"></path>
+   <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://x.com/AnouarAkacha" target="_blank" title="X" class="flex flex-row mr-2">
+      <span class="hidden">X</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+   <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://orcid.org/0009-0006-1349-0477" target="_blank" title="Orcid" class="flex flex-row mr-2">
+      <span class="hidden">Orcid</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.9-1.588 3.9-3.722 0-2.016-1.453-3.722-3.781-3.722h-2.416z"/>
+</svg> </i>
+    </a>
+  
+  
+  
+    <a href="https://www.researchgate.net/profile/Anouar-Akacha-Delenda-2?ev=hdr_xprf" target="_blank" title="ResearchGate" class="flex flex-row mr-2">
+      <span class="hidden">ResearchGate</span>
+      <i class="h-6 w-6 flex-none"> <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-researchgate" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+  <path d="M19 3a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-1v-2h1v-4h-2v1.5a1.5 1.5 0 0 1 -3 0v-1.5h-2v4h1v2h-1a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z"></path>
+  <path d="M5 5h5a3 3 0 0 1 0 6h-2v3"></path>
+  <path d="M8 14l4 6"></path>
+</svg> -->
+
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-researchgate" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z"></path>
+    </svg> </i>
+    </a>
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2026 Anouar Akacha DELENDA
+    
+  </div>
+  
+  <div class="flex flex-row">
+    <span class="ml-0 pl-0 md:ml-2 md:pl-2 border-l-0 md:border-l border-slate-300 dark:border-slate-400">
+      Powered by <a href="https://gohugo.io" target="_blank" rel="noopener" class="underline">Hugo</a> <span class="text-red-600">&hearts;</span> <a href="https://github.com/tomowang/hugo-theme-tailwind" target="_blank" rel="noopener" class="underline">Tailwind</a>
+    </span>
+  </div>
+  
+</section>
+
+</footer>
+<script src="/main.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+{{/* this page define the behaviour of the home page*/}} {{/* we want to have an
+image (rounde) and well fitted on the right of the page*/}} {{/* with a faded
+bio on the left + extra next button*/}} {{ define "main" }} {{/* style is
+defined here */}}
+<style>
+  main {
+    align-items: stretch;
+  }
+  .layout {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+    /*min-height: 80vh;*/
+    align-self: stretch;
+  }
+  .description-holder {
+    position: absolute;
+    top: 20%;
+    left: 18vw;
+    transform: translateY(50%);
+    width: clamp(
+      350px,
+      40%,
+      600px
+    ); /* min percentage of the fill and the max*/
+    height: auto;
+    /* allow content to grow */
+    border-radius: none;
+    overflow: visible;
+    /* allow typing animation overflow */
+    background-color: none;
+  }
+
+  .description-content {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 75%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 75%,
+      transparent 100%
+    );
+    /*transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;*/
+    margin-left: 0;
+    /* push to left */
+    padding-bottom: 5%;
+  }
+
+  /*next btn*/
+  .next-button {
+    margin-top: 1.5vh;
+    padding: clamp(0.5vh, 1vh, 1.5vh) clamp(1vw, 2vw, 3vw);
+    /*border: none;*/
+    border-radius: 40px;
+    background-color: #007bff;
+    color: white;
+    font-size: clamp(18px, 50%, 25px);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out, transform 0.4s ease-in-out,
+      opacity 0.4s ease-in-out;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* add to center the text inside <a> */
+    text-decoration: none;
+  }
+
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Profile picture */
+  .circular-image-holder {
+    position: absolute;
+    top: 50%;
+    right: 18vw;
+    transform: translateY(-50%);
+    width: clamp(120px, 20vw, 400px);
+    height: clamp(120px, 20vw, 400px);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    line-height: 0;
+    /* Remove any line-height affecting image */
+  }
+
+  .circular-image-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .circular-image-holder img:hover {
+    transform: scale(1.13);
+  }
+
+  /*screen scalling issue*/
+  @media (max-width: 1114px) {
+    .layout {
+      flex-direction: column;
+      gap: 5px;
+    }
+    .circular-image-holder {
+      position: relative !important;
+      top: 30vh !important;
+      right: auto !important;
+      margin-bottom: 0 !important;
+      margin: 0 auto 1vh auto;
+      width: clamp(120px, 40vw, 200px);
+      height: clamp(120px, 40vw, 200px);
+    }
+
+    .description-holder {
+      position: relative !important;
+      top: 0vh !important;
+      left: auto !important;
+      width: 90vw;
+      max-width: 400px;
+      padding: 0 !important;
+    }
+  }
+  /* typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  .typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid currentColor; /* ← follows text color */
+    animation: typing 3s steps(24, end), blink 0.75s step-end infinite;
+    display: inline-block;
+    width: 24ch;
+    color: #1e293b; /* slate-800 — light mode */
+  }
+  .dark .typing-effect {
+    color: #e2e8f0; /* slate-200 — dark mode */
+  }
+</style>
+
+{{/* the content */}}
+<div class="layout">
+  {{/* Profile picture — right side */}}
+  <div class="circular-image-holder">
+    {{/* notice that hugo will search for the .Params.xxx defined in the
+    _index.md in content*/}}
+    <img
+      src="{{ .Params.photo }}"
+      alt="Profile picture of {{ .Params.name }}"
+    />
+  </div>
+
+  {{/* Bio — left side */}}
+  <div class="description-holder">
+    <div class="description-content">
+      <h2
+        class="typing-effect"
+        style="font-size: clamp(24px, 2.5vw, 42px); margin-bottom: 0.5vh"
+      >
+        ANOUAR AKACHA DELENDA
+      </h2>
+
+      <p style="font-size: clamp(16px, 1.5vw, 22px); margin-bottom: 1vh">
+        {{ .Params.role }}
+      </p>
+
+      <p
+        class="text-slate-600 dark:text-slate-400"
+        style="
+          font-size: clamp(18px, 50%, 25px);
+          line-height: 1.5;
+          text-align: justify;
+        "
+      >
+        {{ .Params.bio }}
+      </p>
+    </div>
+    <a href="{{ .Params.nextLink }}" class="next-button">Learn more &gt;&gt;</a>
+  </div>
+</div>
+{{ end }}

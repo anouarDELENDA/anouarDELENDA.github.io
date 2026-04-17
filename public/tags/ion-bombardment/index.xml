@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ion Bombardment on A.K.A λ</title>
+    <link>http://localhost:1313/tags/ion-bombardment/</link>
+    <description>Recent content in Ion Bombardment on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Sun, 12 Apr 2026 22:53:16 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ion-bombardment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beilstein: Defects and defect-mediated engineering of two-dimensional materials: challenges and open questions</title>
+      <link>http://localhost:1313/publications/beilstein/</link>
+      <pubDate>Sun, 12 Apr 2026 22:53:16 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/publications/beilstein/</guid>
+      <description>&lt;center&gt;&lt;img src=&#34;http://localhost:1313/images/publications/beilstein_TOC.png&#34; width=&#34;600&#34; /&gt;&lt;/center&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://doi.org/10.3762%2Fbjnano.17.31&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xA;&lt;figure&gt;&#xA;    &lt;img src=&#34;https://img.shields.io/badge/DOI-10.1000/xyz123-blue.svg&#34;&#xA;      alt=&#34;DOI&#34; &#xA;      loading=&#34;lazy&#34;&#xA;    &gt;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xA;&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p style=&#34;text-align:justify; font-weight: normal;&#34;&gt;&#xA;Compared to bulk solids, defects in low-dimensional materials and, specifically, 2D systems are expected to have a stronger effect, detrimental or beneficial, on their properties. Owing to their geometry, defects in 2D materials can easily be formed due to the interaction with the environment or under impacts of energetic particles, such as ions and electrons. At the same time, many concepts of defect production under irradiation in bulk systems are not applicable for 2D materials or require substantial modifications. Various aspects of the physics and chemistry of defects in 2D materials have been addressed, and the results of these investigations are presented in hundreds of research papers and review articles. However, the challenges and open questions that still remain in the field have received relatively little attention. These topics were recently addressed at the symposium “Defect-mediated engineering of nanomaterials for energy and quantum applications” organized by the Beilstein-Institut. Following the discussions at the symposium, here, we present the challenges and open questions in our understanding of the behavior of defective 2D materials, interaction of energetic particles with low-dimensional targets, and defect-mediated engineering of the properties of 2D systems. We further discuss possible solutions to these problems or suggest “work-arounds”, which should accelerate the progress in the field.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

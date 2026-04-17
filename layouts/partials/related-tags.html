@@ -1,0 +1,42 @@
+{{ $currentTags := .Params.tags | default slice }}
+{{ $currentPage := . }}
+{{ $tagCount := dict }}
+
+{{/* Walk all site pages that share at least one tag with this page */}}
+{{ range where .Site.Pages "Section" .Section }}
+  {{ if ne . $currentPage }}
+    {{ $sharedTag := false }}
+    {{ range .Params.tags }}
+      {{ if in $currentTags . }}
+        {{ $sharedTag = true }}
+      {{ end }}
+    {{ end }}
+
+    {{ if $sharedTag }}
+      {{ range .Params.tags }}
+        {{ if not (in $currentTags .) }}
+          {{/* Count how many times this tag co-occurs */}}
+          {{ $count := index $tagCount . | default 0 }}
+          {{ $tagCount = merge $tagCount (dict . (add $count 1)) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $tagCount }}
+<div class="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-xl">
+  <p class="text-sm font-semibold text-gray-600 mb-3">🏷 People also explore</p>
+  <div class="flex flex-wrap gap-2">
+    {{ range $tag, $count := $tagCount }}
+    <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}"
+       class="inline-flex items-center gap-1 px-3 py-1 bg-white border border-gray-300
+              text-sm text-gray-700 rounded-full hover:border-indigo-400
+              hover:text-indigo-600 hover:bg-indigo-50 transition-all">
+      #{{ $tag }}
+      <span class="text-xs text-gray-400">({{ $count }})</span>
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

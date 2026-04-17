@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Schrödinger Equation on A.K.A λ</title>
+    <link>http://localhost:1313/tags/schr%C3%B6dinger-equation/</link>
+    <description>Recent content in Schrödinger Equation on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Mon, 13 Apr 2026 00:32:05 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/schr%C3%B6dinger-equation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bottom-up synthesis of Density Functional Theory (DFT)</title>
+      <link>http://localhost:1313/blogs/dft/</link>
+      <pubDate>Mon, 13 Apr 2026 00:32:05 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/blogs/dft/</guid>
+      <description>&lt;p&gt;&lt;a id=&#34;toppage&#34;&gt; &lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;bottom-up-synthesis-of-density-functional-theory-dft-from-the-born-oppenheimer-approximation-to-the-kohn--sham-equation&#34;&gt;&lt;center&gt;Bottom-up synthesis of Density Functional Theory (DFT)&lt;/center&gt;&lt;/br&gt; &lt;p style=&#34;text-align:center;font-weight:normal;&#34;&gt;From the Born-Oppenheimer approximation to the Kohn &amp;amp; Sham equation.&lt;/h1&gt;&#xA;&lt;/br&gt;&#xA;&lt;details&gt;&#xA;&lt;summary&gt; &lt;b&gt; Disclaimer&lt;/b&gt;&#xA;&lt;/summary&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The content of this article is based on various internet resources&lt;b&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/b&gt;. Furthermore, I have attempted to provide a simplified approach to the re-derivation of the equations. Therefore, there may be potential hiccups and mathematicals glichs in some simplifications. Here, I apologize in advance for any mistakes. However, I would welcome any corrections from you.&lt;br&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,163 @@
+{{ define "main" }}
+
+<style>
+  .cv-container {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  /* ── Tab bar ── */
+  .cv-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cv-tab {
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px 6px 0 0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #475569;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 2px solid transparent;
+    border-bottom: none;
+    margin-bottom: -2px;
+  }
+
+  .cv-tab:hover {
+    color: #2563eb;
+    background-color: #f1f5f9;
+  }
+
+  .cv-tab.active {
+    color: #2563eb;
+    border-color: #e2e8f0;
+    border-bottom-color: white;
+    background-color: white;
+  }
+
+  .dark .cv-tab {
+    color: #94a3b8;
+  }
+
+  .dark .cv-tab:hover {
+    color: #60a5fa;
+    background-color: #1e293b;
+  }
+
+  .dark .cv-tab.active {
+    color: #60a5fa;
+    border-color: #334155;
+    border-bottom-color: #1e293b;
+    background-color: #1e293b;
+  }
+
+  .dark .cv-tabs {
+    border-bottom-color: #334155;
+  }
+
+  /* ── Section content ── */
+  .cv-section {
+    display: none;
+    width: 100%;
+  }
+
+  .cv-section.active {
+    display: block;
+    width: 100%;
+  }
+
+  /* override prose max-width constraint */
+  .cv-section.prose {
+    max-width: 100% !important;
+  }
+</style>
+
+<div class="cv-container">
+  {{/* ── Tab buttons ── */}} {{/*
+  <div class="cv-tabs">
+    {{ range .Pages.ByWeight }}
+    <a
+      class="cv-tab"
+      href="#{{ .File.ContentBaseName }}"
+      data-section="{{ .File.ContentBaseName }}"
+    >
+      {{ .Title }}
+    </a>
+    {{ end }}
+  </div>
+  {{/* ── Tab buttons ── */}}
+  <div class="cv-tabs">
+    {{ range .Pages.ByWeight }} {{ if .Pages }} {{/* This page has sub-pages
+    (e.g. projects) — link out to it */}}
+    <a
+      class="cv-tab {{ if eq $.RelPermalink .RelPermalink }}active{{ end }}"
+      href="{{ .RelPermalink }}"
+    >
+      {{ .Title }}
+    </a>
+    {{ else }}
+    <a
+      class="cv-tab"
+      href="#{{ .File.ContentBaseName }}"
+      data-section="{{ .File.ContentBaseName }}"
+    >
+      {{ .Title }}
+    </a>
+    {{ end }} {{ end }}
+  </div>
+
+  {{/* ── Section content panels — only for leaf pages ── */}} {{ range
+  .Pages.ByWeight }} {{ if not .Pages }}
+  <div
+    class="cv-section prose dark:prose-invert max-w-none"
+    id="{{ .File.ContentBaseName }}"
+  >
+    {{ .Content }}
+  </div>
+  {{ end }} {{ end }}
+  
+  {{/* ── Section content panels ── */}} 
+  {{/*{{ range .Pages.ByWeight }}
+  <div
+    class="cv-section prose dark:prose-invert max-w-none"
+    id="{{ .File.ContentBaseName }}"
+  >
+    {{ .Content }}
+  </div>
+  {{ end }}
+</div>
+
+{{/* ── Tab switching script ── */}}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs     = document.querySelectorAll(".cv-tab[data-section]");
+    const sections = document.querySelectorAll(".cv-section");
+  
+    function activate(id) {
+      tabs.forEach(t => t.classList.toggle("active", t.dataset.section === id));
+      sections.forEach(s => s.classList.toggle("active", s.id === id));
+      history.replaceState(null, "", "#" + id);
+    }
+  
+    tabs.forEach(tab => {
+      tab.addEventListener("click", function (e) {
+        e.preventDefault();
+        activate(this.dataset.section);
+      });
+    });
+  
+    const hash  = window.location.hash.replace("#", "");
+    const first = tabs[0]?.dataset.section;
+    activate(hash && document.getElementById(hash) ? hash : first);
+  });
+  </script>
+
+{{ end }}

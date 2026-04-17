@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nanotec on A.K.A λ</title>
+    <link>http://localhost:1313/tags/nanotec/</link>
+    <description>Recent content in Nanotec on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Sun, 12 Apr 2026 19:08:33 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nanotec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conferences &amp; Workshops</title>
+      <link>http://localhost:1313/portfolio/confsworkshops/</link>
+      <pubDate>Sun, 12 Apr 2026 19:08:33 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/confsworkshops/</guid>
+      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of contents&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;I. &lt;a href=&#34;#confs&#34;&gt;Conferences&lt;/a&gt;&#xA;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;I.1 &lt;a href=&#34;#carbon25&#34;&gt;The Carbon conference 2025, Saint-Malo, France&lt;/a&gt;&#xA; (June 29th → July 4th 2025)&lt;/li&gt;&#xA;&lt;li&gt;I.2 &lt;a href=&#34;#nanoteC24&#34;&gt;The NanoteC24 conference, Nantes, France&lt;/a&gt;&#xA; (27th → 30th August 2024)&lt;/li&gt;&#xA;&lt;li&gt;I.3 &lt;a href=&#34;#ICREATA21&#34;&gt;THE FIRST INTERNATIONAL CONFERENCE ON RENEWABLE ENERGY ADVANCED TECHNOLOGIES AND APPLICATIONS (ICREATA&#39;21), Adrar, Algeria&lt;/a&gt;&#xA; 25th → 27th October 2021&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;II. &lt;a href=&#34;#workshops&#34;&gt;Workshops&lt;/a&gt;&#xA;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;II.1 &lt;a href=&#34;#pyroman25&#34;&gt;The Pyroman workshop (PNRB), Rennes, France&lt;/a&gt;&#xA; (28th → 29th June 2025)&lt;/li&gt;&#xA;&lt;li&gt;II.2 &lt;a href=&#34;#vaspOnline&#34;&gt;Exploring chemical reactions in VASP (Online 🌐)&lt;/a&gt;&#xA; (06th → 08th November 2024)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;N.B:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

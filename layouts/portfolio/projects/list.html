@@ -1,0 +1,172 @@
+{{/* Genrated using Claude */}}
+{{/* Projects sub-page — tag filter scoped to projects only */}}
+{{ define "main" }}
+
+<style>
+  main {
+    align-items: stretch;
+  }
+  .proj-container {
+    width: 100%;
+    max-width: 860px;   
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #2563eb;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  .dark .back-link {
+    color: #60a5fa;
+  }
+  /* tag filter */
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .tag-btn {
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid #cbd5e1;
+    background: transparent;
+    color: #475569;
+    transition: all 0.15s ease;
+  }
+  .tag-btn:hover {
+    border-color: #7c3aed;
+    color: #7c3aed;
+  }
+  .tag-btn.active {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: white;
+  }
+  .dark .tag-btn {
+    color: #94a3b8;
+    border-color: #334155;
+  }
+  .dark .tag-btn:hover {
+    border-color: #a78bfa;
+    color: #a78bfa;
+  }
+  .dark .tag-btn.active {
+    background: #7c3aed;
+    color: white;
+  }
+  .proj-count {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+  /* project entries */
+  .proj-entry {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .dark .proj-entry {
+    border-bottom-color: #334155;
+  }
+  .proj-entry.hidden {
+    display: none;
+  }
+  .proj-entry:last-child {
+    border-bottom: none;
+  }
+  /* tag pills on each entry */
+  .entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .entry-tag {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .dark .entry-tag {
+    background: #1e293b;
+    color: #94a3b8;
+  }
+</style>
+
+<div class="proj-container">
+
+  {{/* back link to portfolio */}}
+  <a class="back-link" href="{{ (.Parent).RelPermalink }}">
+    ← Back to Portfolio
+  </a>
+
+  {{/* collect all unique tags across project pages */}}
+  {{ $allTags := slice }}
+  {{ range .Pages }}
+    {{ range .Params.tags }}
+      {{ $allTags = $allTags | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $allTags = $allTags | uniq }}
+
+  {{/* tag filter buttons */}}
+  <div class="tag-filter">
+    <button class="tag-btn active" data-tag="all">All</button>
+    {{ range $allTags }}
+      <button class="tag-btn" data-tag="{{ . }}">{{ . }}</button>
+    {{ end }}
+  </div>
+
+  <p class="proj-count" id="proj-count">
+    {{ len .Pages }} project{{ if ne (len .Pages) 1 }}s{{ end }}
+  </p>
+
+  {{/* project entries */}}
+  {{ range .Pages.ByWeight }}
+    <div class="proj-entry prose dark:prose-invert w-full max-w-none"
+         data-tags="{{ delimit .Params.tags "," }}">
+      {{ .Content }}
+      <div class="entry-tags">
+        {{ range .Params.tags }}
+          <span class="entry-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons  = document.querySelectorAll(".tag-btn");
+    const entries  = document.querySelectorAll(".proj-entry");
+    const countEl  = document.getElementById("proj-count");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", function () {
+        const tag = this.dataset.tag;
+        buttons.forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        let visible = 0;
+        entries.forEach(entry => {
+          const tags = entry.dataset.tags.split(",");
+          const show = tag === "all" || tags.includes(tag);
+          entry.classList.toggle("hidden", !show);
+          if (show) visible++;
+        });
+        countEl.textContent = visible + " project" + (visible !== 1 ? "s" : "");
+      });
+    });
+  });
+</script>
+
+{{ end }}
