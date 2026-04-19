@@ -117,3 +117,7 @@ enableRobotsTXT = true
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-671L4YZLEC"    # your GA4 measurement ID
