@@ -444,7 +444,7 @@ Now we can go back to \(bra-ket\) notation without confusion:
 \end{equation*}
 \]
 
-This is the why we choose \(bra\) over \(ket\), to end-up with system of Schrodinger-like equations! for which \(\hat{J}_i\) is an integral operator stand for the classical interaction of an electron distributions given by \(|\varphi_j|^2\) and is called the \(\textbf{direct\ term}\). While \(\hat{K}_j\) called the \(\textbf{exchange operator}\), has no classical analogue and it is a direct result of the \($antisymmetry$\) property of the wavefunction. The Fock operator is given by:
+This is the why we choose \(bra\) over \(ket\), to end-up with system of Schrodinger-like equations! for which \(\hat{J}_i\) is an integral operator stand for the classical interaction of an electron distributions given by \(|\varphi_j|^2\) and is called the \(\textbf{direct\ term}\). While \(\hat{K}_j\) called the \(\textbf{exchange operator}\), has no classical analogue and it is a direct result of the *antisymmetry* property of the wavefunction. The Fock operator is given by:
 
 \[
 \begin{equation}
