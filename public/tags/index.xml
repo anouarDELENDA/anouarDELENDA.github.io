@@ -9,8 +9,15 @@
     <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
     <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
     <copyright>Anouar Akacha DELENDA</copyright>
-    <lastBuildDate>Mon, 13 Apr 2026 00:32:05 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 22:06:33 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/tags/projects/</link>
+      <pubDate>Sun, 19 Apr 2026 22:06:33 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/projects/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Born-Oppenheimer Approximation</title>
       <link>http://localhost:1313/tags/born-oppenheimer-approximation/</link>
@@ -103,6 +110,13 @@
       <description></description>
     </item>
     <item>
+      <title>Clickbait</title>
+      <link>http://localhost:1313/tags/clickbait/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/clickbait/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>COVID19</title>
       <link>http://localhost:1313/tags/covid19/</link>
       <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
@@ -114,6 +128,34 @@
       <link>http://localhost:1313/tags/data-analysis/</link>
       <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
       <guid>http://localhost:1313/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Digital Learning</title>
+      <link>http://localhost:1313/tags/digital-learning/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/digital-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Education</title>
+      <link>http://localhost:1313/tags/education/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Engagement</title>
+      <link>http://localhost:1313/tags/engagement/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/engagement/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kaggle</title>
+      <link>http://localhost:1313/tags/kaggle/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/tags/kaggle/</guid>
       <description></description>
     </item>
     <item>

@@ -5,6 +5,8 @@ title = 'A Portable Data Set for Borophene Growth Modeling with Reactive Neural 
 weight = 3
 categories = ['Publications']
 tags = ["Boron","Chemical structure","Neural networks","Potential energy","Silver"]
+showReadingTime= true
+showAuthor= true
 +++
 
 # A Portable Data Set for Borophene Growth Modeling with Reactive Neural Network Potentials

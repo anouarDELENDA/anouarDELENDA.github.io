@@ -3,9 +3,13 @@ date = '2026-04-13T00:32:05+02:00'
 draft = false
 title = 'Bottom-up synthesis of Density Functional Theory (DFT)'
 author = 'Anouar Akacha Delenda'
+showAuthor= true
 categories= ["Blogs"]
 tags = ["Density functional theory", "Kohn and Sham", "Schrödinger equation", "Born-Oppenheimer approximation", "Hartree-Fock equation", "electronic density", "wavefunction"]
 weight = 1
+image = "/images/blogs/DFT_BottomUP/wordcloud.png"
+comments= true
+showReadingTime= true
 +++
 
 <a id="toppage"> </a>
@@ -78,13 +82,13 @@ The right-hand side of \((2)\) are respectively: **electron** and **nucleus** _k
 The basic idea is the following: ”_We consider the nuclei as stationary objects, so we freeze the nuclear positions._”. We say that this approximation is **adiabatic** (We move from \(4(Ne + Nn) \longrightarrow 4Ne\)).
 
 \[
-\begin{equation}\Psi(\overrightarrow{r_i},\overrightarrow{\sigma_i},\overrightarrow{R_i},\overrightarrow{\sigma_i^N}) \longrightarrow \Psi(\overrightarrow{r_1},\overrightarrow{\sigma_1},\dots , \overrightarrow{r_{N_e}},\overrightarrow{\sigma_{N_e}}; \underbrace{\left[\overrightarrow{R_1}, \dots , \overrightarrow{R_{N}}\right]}\_{Paramaters})\end{equation}
+\begin{equation}\Psi(\overrightarrow{r_i},\overrightarrow{\sigma_i},\overrightarrow{R_i},\overrightarrow{\sigma_i^N}) \longrightarrow \Psi(\overrightarrow{r_1},\overrightarrow{\sigma_1},\dots , \overrightarrow{r_{N_e}},\overrightarrow{\sigma_{N_e}}; \underbrace{\left[\overrightarrow{R_1}, \dots , \overrightarrow{R_{N}}\right]}_{Paramaters})\end{equation}
 \]
 
 The previous wavefunction should be **_anti-symmetric_**. The problem is reduced into solving the Schrödinger equation for the following Hamiltonian:
 
 \[
-\begin{equation}\mathcal{H} = -\sum_i^{N_e}\frac{\nabla_{r_i}^2}{m_i} - \sum_{\{i,j\}\longrightarrow \{N_e, N_n\}}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} + \frac{1}{2}\sum_{i}^{N_e}\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} + \underbrace{\frac{1}{2}\sum_{i}^{N_n}\sum_{i\neq j}^{N_n}\frac{Z_jZ_i}{|\overrightarrow{R_j}-\overrightarrow{R_i}|}}*{Constant}\end{equation}
+\begin{equation}\mathcal{H} = -\sum_i^{N_e}\frac{\nabla_{r_i}^2}{m_i} - \sum_{\{i,j\}\longrightarrow \{N_e, N_n\}}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} + \frac{1}{2}\sum_{i}^{N_e}\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} + \underbrace{\frac{1}{2}\sum_{i}^{N_n}\sum_{i\neq j}^{N_n}\frac{Z_jZ_i}{|\overrightarrow{R_j}-\overrightarrow{R_i}|}}_{Constant}\end{equation}
 \]
 
 > </br>
@@ -107,13 +111,13 @@ The previous wavefunction should be **_anti-symmetric_**. The problem is reduced
 >
 > - The energy minimization principal.
 >
-> ⚠️ At the end this is an approximation (work well for chemistry topics, not for solids).</br> ></br>
+> ⚠️ At the end this is an approximation (work well for chemistry topics, not for solids).</br> 
 
 The first step is visualizing the terms in the reduced Schrödinger equation after \(\textbf{BO}\) approximation. After all, we end up with:
 
 \[
 \begin{equation}
-\mathcal{H} = \sum_i^{N_e}\underbrace{\left[-\frac{\nabla_{r_i}^2}{m_i} - \sum_j^{N_n}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} \right]}_{\hat{h}_1(\overrightarrow{r_i})\equiv\ single-particle } + \frac{1}{2}\sum_{i}^{N_e}\underbrace{\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} }_{\hat{h}\_2(r_i,r_j)\equiv\ effective\ potential}
+\mathcal{H} = \sum_i^{N_e}\underbrace{\left[-\frac{\nabla_{r_i}^2}{m_i} - \sum_j^{N_n}\frac{Z_j}{|\overrightarrow{R_j}-\overrightarrow{r_i}|} \right]}_{\hat{h}_1(\overrightarrow{r_i})\equiv\ single-particle } + \frac{1}{2}\sum_{i}^{N_e}\underbrace{\sum_{i\neq j}^{N_e}\frac{1}{|\overrightarrow{r_j}-\overrightarrow{r_i}|} }_{\hat{h}_2(r_i,r_j)\equiv\ effective\ potential}
 \end{equation}
 \]
 
@@ -274,7 +278,7 @@ In this section we will apply the variational principale on the last equation an
 
 \[
 \begin{equation}
-\delta E\_{HF} = 0
+\delta E_{HF} = 0
 \end{equation}
 \]
 
@@ -283,7 +287,7 @@ We use the Lagrange multipliers and the orthogonality of the set of our wvefunct
 \[
 \begin{gather}
 \delta \left[ E_{HF} +\sum_{i,j}\left(-\lambda_{i,j} +\lambda_{i,j}\right) \right] = 0 \\
-\delta \left[ E_{HF} -\sum_{i,j}\lambda_{i,j} \left(\bra{\varphi_i}\ket{\varphi_j}+\delta_{i,j}\right) \right] = 0\\
+\delta \left[ E_{HF} -\sum_{i,j}\lambda_{i,j} \left(\langle\varphi_i|\varphi_j\rangle+\delta_{i,j}\right) \right] = 0\\
 \delta F = 0
 \end{gather}
 \]
@@ -292,7 +296,7 @@ The \(F\) stand for \(Fock\) operator in the last equation. Now we will consider
 
 \[
 \begin{gather*}
-\delta \left[\sum_{i,j}\lambda_{i,j} \left(\bra{\varphi_i}\ket{\varphi_j}+\delta_{i,j}\right) \right] = \sum_{i,j}\lambda_{i,j} \left[\bra{\delta\varphi_i}\ket{\varphi_j}+\bra{\varphi_i}\ket{\delta\varphi_j} \right]
+\delta \left[\sum_{i,j}\lambda_{i,j} \left(\langle\varphi_i|\varphi_j\rangle+\delta_{i,j}\right) \right] = \sum_{i,j}\lambda_{i,j} \left[\langle\delta\varphi_i|\varphi_j\rangle+\langle\varphi_i|\delta\varphi_j\rangle \right]
 \end{gather*}
 \]
 
@@ -300,7 +304,7 @@ We can write the second term as:
 
 \[
 \begin{gather*}
-\bra{\varphi_i}\ket{\delta\varphi_j} =\underset{\mathbb{R}^2}{\int} \varphi_i^*(r_i)\delta\varphi_i(r_i) dr^2 = \left[\underset{\mathbb{R}^2}{\int} \varphi_i(r_i)\delta\varphi_i^*(r_i) dr^2\right]^*=\bra{\delta\varphi_i}\ket{\varphi_j}^*
+\langle\varphi_i|\delta\varphi_j\rangle =\underset{\mathbb{R}^2}{\int} \varphi_i^*(r_i)\delta\varphi_j(r_j) dr^2 = \left[\underset{\mathbb{R}^2}{\int} \varphi_i(r_i)\delta\varphi_j^*(r_j) dr^2\right]^*=\langle\delta\varphi_i|\varphi_j\rangle^*
 \end{gather*}
 \]
 
@@ -320,12 +324,12 @@ Since \(\hat{h}_1\) is hermitian operator i.e \(\left(\hat{h}_1\right)^{\dagger}
 \end{equation*}
 \]
 
-Where \(C.C\) stand for \(Complex\ Conjugate\). Then we work with second term of \(Hartree-Fock\) energy (\(E\_{HF}\)), step by step we will start by the electrons coulomb interaction:
+Where \(C.C\) stand for \(Complex\ Conjugate\). Then we work with second term of \(Hartree-Fock\) energy (\(E_{HF}\)), step by step we will start by the electrons coulomb interaction:
 
 \[
 \begin{gather*}
 \delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_i\varphi_j}\right] = \delta\left[\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}\right] \\
-    + \textcolor{green}{\sum_{i}^{N}\sum_{j}^{N}\bra{\delta\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
+    = \textcolor{green}{\sum_{i}^{N}\sum_{j}^{N}\bra{\delta\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
     +  \textcolor{orange}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\delta\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
     + \textcolor{green}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\delta\varphi_{i}(r_i)\varphi_{j}(r_j)}} \\
     + \textcolor{orange}{\sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_{i}(r_i)\varphi_{j}(r_j)}\hat{h}_2\ket{\varphi_{i}(r_i)\delta\varphi_{j}(r_j)}}
@@ -375,7 +379,7 @@ Hence, we can write in more condensed way as before:
 
 \[
 \begin{align*}
-\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] &= \sum*{i}^{N}\sum*{j}^{N} \bra{\delta\varphi*{i}(r_j)\varphi*{j}(r*i)}\hat{h}\_2(r_i, r_j)\ket{\varphi*{j}(r*i)\varphi*{i}(r*j)}\\ &+ \sum*{i}^{N}\sum*{j}^{N} \bra{\varphi*{i}(r*j)\delta\varphi*{j}(r*i)}\hat{h}\_2(r_i, r_j)\ket{\varphi*{j}(r*i)\varphi*{i}(r_j)} \\
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] &= \sum_{i}^{N}\sum_{j}^{N} \bra{\delta\varphi_{i}(r_j)\varphi_{j}(r_)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)}\\ &+ \sum_{i}^{N}\sum_{j}^{N} \bra{\varphi_{i}(r_j)\delta\varphi_{j}(r_i)}\hat{h}_2(r_i, r_j)\ket{\varphi_{j}(r_i)\varphi_{i}(r_j)} \\
 &+ C.C
 \end{align*}
 \]
@@ -384,7 +388,7 @@ Now we will omit the notation \(\varphi_i(r_j)\) :
 
 \[
 \begin{equation*}
-\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] =\sum*{i}^{N}\sum*{j}^{N} \left[ \bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + C.C \right]
+\delta\left[ \sum_{i}^{N}\sum_{j}^{N}\bra{\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i}\right] =\sum_{i}^{N}\sum_{j}^{N} \left[ \bra{\delta\varphi_i\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + \bra{\varphi_i\delta\varphi_j}\hat{h}_2\ket{\varphi_j\varphi_i} + C.C \right]
 \end{equation*}
 \]
 
@@ -423,7 +427,7 @@ Now we have our final \(action\) expression (\(F\)) of our system, we take the d
 \end{align*}
 \]
 
-The idea of factoring the \(ket\) is just to re-write our expression in Schrodinger-like form, and it's not rigorous from the mathematical point of view! Hence, Factoring out the \(\ket{\varphi_k}\) gives:
+The idea of factoring the \(ket\) is just to re-write our expression in Schrodinger-equation like form, and it's not rigorous from the mathematical point of view! Hence, Factoring out the \(\ket{\varphi_k}\) gives:
 
 \[
 \begin{gather*}
@@ -440,7 +444,7 @@ Now we can go back to \(bra-ket\) notation without confusion:
 \end{equation*}
 \]
 
-This is the why we choose \(bra\) over \(ket\), to end-up with system of Schrodinger-like equations! for which \(\hat{J}_i\) is an integral operator stand for the classical interaction of an electron distributions given by \(|\varphi_j|^2\) and is called the \textbf{direct term}. While \(\hat{K}_j\) called the \textbf{exchange operator}, has no classical analogue and it is a direct result of the $antisymmetry$ property of the wavefunction. The Fock operator is given by:
+This is the why we choose \(bra\) over \(ket\), to end-up with system of Schrodinger-like equations! for which \(\hat{J}_i\) is an integral operator stand for the classical interaction of an electron distributions given by \(|\varphi_j|^2\) and is called the \(\textbf{direct\ term}\). While \(\hat{K}_j\) called the \(\textbf{exchange operator}\), has no classical analogue and it is a direct result of the \($antisymmetry$\) property of the wavefunction. The Fock operator is given by:
 
 \[
 \begin{equation}
@@ -467,8 +471,8 @@ For instance, there exist \(\textbf{Koopman’s theorem}\), stating that each ei
 
 <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
-In this section we use \(Koopman's\ theorem\) to give an insight interpretation to the eigenenergies \(\varepsilon_k$ we find in the previous equation. We will consider two system with \((N-1)\) and \(N\) electrons respectively. For which the system of \(N-1\) electron is missing one electron on some orbital "\(n\)". Also, beside omitting the spin orbitals degrees of freedom, we postulate that the orbitals are unchanged during this process.
-We start by writing the \(HF\) energy of both system:
+In this section we use \(Koopman's\ theorem\) to give an insight interpretation to the eigenenergies \(\varepsilon_k$\) we find in the previous equation. We will consider two system with (N-1) and N electrons respectively. For which the system of \(N-1\) electron is missing one electron on some orbital "n". Also, beside omitting the spin orbitals degrees of freedom, we postulate that the orbitals are unchanged during this process.
+We start by writing the **HF** energy of both system:
 
 \[
 \begin{gather*}
@@ -506,24 +510,28 @@ The last equation is nothing less that the negative eigenenergy of the \(\textbf
 🗣 \(\textbf{Koopmans’ theorem}\), states that each eigenvalue of the \(\textbf{Fock}\) operator gives the energy required to remove an electron from the corresponding single-electron state. And, similarly the energy required to add an electron to orbital "n" can be proven to be given by \(+\ \varepsilon_n\).
 </aside>
 
-## 2.2.5 Hartree-Fock-Roothaan <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 2.2.5 Hartree-Fock-Roothaan 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 One of the attempt to solve the \(\textbf{HF}\) equation was done in 1951 by \(\textbf{Roothaan}\). Clemens C. J. Roothaan was a Dutch physicist and chemist known for his development of the self-consistent field theory of molecular structure<sup>2</sup>. For a quick read brows the [Roothaan equation](https://en.wikipedia.org/wiki/Roothaan_equations).
 
 <sup><b>2</b></sup>: [Wikipedia-Bibliography](https://en.wikipedia.org/wiki/Clemens_C._J._Roothaan)
 
-# 3 The many-body Problem as electron density dependence <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+# 3 The many-body Problem as electron density dependence 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 In this section we will rewrite the Hamiltonian as function of the electron density. Again we will treat the Hamiltonian as a spin-less problem. This is the core idea behind density dunctional theory where the function we are interested in take another function and return an output a.k.a number (\(f \longrightarrow I[f]\)).
 
-<center><img src="/images/blogs/DFT_BottomUP/functional_illustration.png"></center>
+<center><img src="/images/blogs/DFT_BottomUP/functional_illustrationV1.png"></center>
 
 But first we need to write the later entity \(n(r)\). So to start we define \(n(r_1)\) the electron density of finding an electron at position \(r_1\) while the rest of electrons set are at positions \(\{r_2,r_3, \dots, r_N\}\) as following:
 
 \[
 \begin{gather}
 \hat{n}(r_1) = \delta (r-r_1) \\
-n(r_1) = \bra{\Psi(r_1, r_2, \dots, r_N)}\hat{n(r_1)}\ket{\Psi(r_1, r_2, \dots, r_N)} \\
+n(r_1) = \bra{\Psi(r_1, r_2, \dots, r_N)}\hat{n}(r_1)\ket{\Psi(r_1, r_2, \dots, r_N)} \\
 n(r_1) = \underset{\mathbb{R}^3}{\int} \dots \underset{\mathbb{R}_N^3}{\int} \Psi^*(r_1, r_2, \dots, r_N) \delta (r-r_1) \Psi(r_1, r_2, \dots, r_N) dr_1dr_2\dots dr_N
 \end{gather}
 \]
@@ -561,7 +569,9 @@ N = \int drn(r)
 \end{equation}
 \]
 
-## 3.1 The electrons-ions interaction <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 3.1 The electrons-ions interaction 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 Previously we had established the electrons-ions interaction, now we will introduce the electrons density \(n(r)\). We start as always by taking the expectation values of the later coulomb interaction:
 
@@ -600,7 +610,9 @@ We notice the appearance of the electron density that we define it previously, h
 \end{equation}
 \]
 
-## 3.2 The electrons-electrons interaction <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 3.2 The electrons-electrons interaction 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 Using the same manner that we did in the last section we will introduce the electron density. Note that it is not quite the same quantity \(n(r)\)! Within the electrons-electrons interaction. And the starting point is always the avearage value:
 
@@ -697,10 +709,11 @@ Which lead to:
 
 The \(E_c\) is a correction term.
 
-## 3.3 The Kinetic Energy <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 3.3 The Kinetic Energy 
 
-Yet, we did not write our Energy as a functional of the density \(n(r)\). We still have the Kinetic term which is hard to deal with since we have the operator \(\nabla^2\) that act on the wavefunction (\(\Psi\)). In order to tackle the kinetic energy, we make one of the key assumptions of density functional theory. \(\textbf{We assume that the
-density can be written as the sum norm squares of a collection of single-particle orbitals}\):
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+
+Yet, we did not write our Energy as a functional of the density \(n(r)\). We still have the Kinetic term which is hard to deal with since we have the operator \(\nabla^2\) that act on the wavefunction (\(\Psi\)). In order to tackle the kinetic energy, we make one of the key assumptions of density functional theory. **We assume that the density can be written as the sum norm squares of a collection of single-particle orbitals**:
 
 \[
 \begin{equation*}
@@ -721,13 +734,15 @@ T = -\frac{1}{2}\sum_i^N\int \varphi_i(r)\nabla^2_r \varphi_i(r)dr + E_x
 💡 The idea behind the \textbf{KS-orbitals} is to let introduce the density indirectly especially when it comes to the variation principal. The global idea is that the Kinetic energy had been linked to the density through \(\textbf{KS-orbitals}\).
 </aside>
 
-## 3.4 Introducing the Exchange Correlation term <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 3.4 Introducing the Exchange Correlation term 
 
-In the following we will refer to the paper of \(\textsc{Kohn $\&$ Sham}\)<sup><b>3</b></sup>. As it was reported in the later paper, the ground state energy has the following form:
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+
+In the following we will refer to the paper of \(\textsc{Kohn and Sham}\)<sup><b>3</b></sup>. As it was reported in the later paper, the ground state energy has the following form:
 
 \[
 \begin{equation}
-E[n(r)]= -\frac{1}{2}\sum_i^N\int \varphi_i(r)\nabla^2_r \varphi_i(r)dr + \iint \frac{drdr'}{|r-r'|}n(r)n(r') + \int V_{e-n}(r)n(r)dr + E\_{xc}[n(r)]
+E[n(r)]= -\frac{1}{2}\sum_i^N\int \varphi_i(r)\nabla^2_r \varphi_i(r)dr + \iint \frac{drdr'}{|r-r'|}n(r)n(r') + \int V_{e-n}(r)n(r)dr + E_{xc}[n(r)]
 \end{equation}
 \]
 
@@ -735,11 +750,11 @@ Where:
 
 \[
 \begin{equation}
-E_{xc}[n(r)] = \int dr\varepsilon*{xc}[n(r)]n(r)
+E_{xc}[n(r)] = \int dr\varepsilon_{xc}[n(r)]n(r)
 \end{equation}
 \]
 
-Where \(\varepsilon\_{xc}\) is the exchange and correrrelation energy rep electron of a uniform electron gas of density \(n(r)\)<sup><b>3</b></sup>.
+Where \(\varepsilon_{xc}\) is the exchange and correrrelation energy rep electron of a uniform electron gas of density \(n(r)\)<sup><b>3</b></sup>.
 
 The origin of this term is the difference between a system of N interacting and noninteracting particles. More specifically:
 
@@ -748,7 +763,9 @@ The origin of this term is the difference between a system of N interacting and 
 
 <sup><b>3</b></sup> [Walter Kohn and Lu Jeu Sham. Self-consistent equations including exchange and correlation effects. Physical review, 140(4A):A1133, 1965](https://doi.org/10.1103/PhysRev.140.A1133)
 
-# 3.5 THE HOHENBERG-KOHN THEOREM <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+# 3.5 THE HOHENBERG-KOHN THEOREM 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 **Theorem I:**
 
@@ -756,11 +773,11 @@ The origin of this term is the difference between a system of N interacting and 
 📜 The external potential \(V_{ext}(r)\) is a unique functional of the density \(n(r)\).
 </aside>
 
-<center><img src="/images/blogs/DFT_BottomUP/HB-K_TH.png"></center>
+<center><img src="/images/blogs/DFT_BottomUP/HB-K_THV1.png"></center>
 
 **Proof**
 
-Let assume that exist two different external potential \(V*{ext}^{(1)}(r)\) and \(V*{ext}^{(2)}(r)\) that gives rise to the same electrons density for non-degenerate ground state \(n(r)\). Hence, we have two wavefunction for two Hamiltonian:
+Let assume that exist two different external potential \(V_{ext}^{(1)}(r)\) and \(V_{ext}^{(2)}(r)\) that gives rise to the same electrons density for non-degenerate ground state \(n(r)\). Hence, we have two wavefunction for two Hamiltonian:
 
 \[
 \begin{gather*}
@@ -794,9 +811,9 @@ Let \(E\) be the exact energy of the ground state of our system of \(N\) interac
 
 \[
 \begin{gather*}
-E= \underset{\psi}{\text{min}} \langle \hat{T} + \hat{V}*{e-e} + \hat{V}*{ext}\rangle*{\psi}\\
-E= \underset{\psi}{\text{min}} \Big[ \langle \hat{T} + \hat{V}*{e-e}\rangle*{\psi}+ \langle\hat{V}*{ext}\rangle*{\psi}\Big]\\
-E= \underset{n(r)}{\text{min}} \Big[ \iint drdr' v*{e-e}(r,r')n(r)n(r') + \int n(r)V\_{ext}(r)dr+ G[n(r)]\Big]
+E= \underset{\psi}{\text{min}} \langle \hat{T} + \hat{V}_{e-e} + \hat{V}_{ext}\rangle_{\psi}\\
+E= \underset{\psi}{\text{min}} \Big[ \langle \hat{T} + \hat{V}_{e-e}\rangle_{\psi}+ \langle\hat{V}_{ext}\rangle_{\psi}\Big]\\
+E= \underset{n(r)}{\text{min}} \Big[ \iint drdr' v_{e-e}(r,r')n(r)n(r') + \int n(r)V\_{ext}(r)dr+ G[n(r)]\Big]
 \end{gather*}
 \]
 
@@ -804,11 +821,13 @@ Where \(G[n(r)]\) is a universal function of the density:
 
 \[
 \begin{equation}
-G[n(r)] = \underset{n(r)}{\text{min}} \Big[ T[n(r)] + E\_{xc}[n(r)] \Big]
+G[n(r)] = \underset{n(r)}{\text{min}} \Big[ T[n(r)] + E_{xc}[n(r)] \Big]
 \end{equation}
 \]
 
-# 4 Kohn and Sham Equation: Derivation attempt! <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+# 4 Kohn and Sham Equation: Derivation attempt! 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 We will try to re-derive the \(\textbf{KS}\) equation by following the same procedures used in \(\textbf{HF}\) approach. The idea is as simple as the minimization over the wavefunction! But an approximation is needed. As we discussed previously we already write the Energy as functional of the density (i.e: \(E[n(r)]\)); but it was shown that the kinetic energy raise a problem, that it can not be written in terms of the density \(n(r)\), so we consider the \(\textbf{KS}\) orbitals that builds the density from ground i.e: \(n(r)=\sum_i^N |\varphi(r)|^2\), hence the kinetic term can be minimized through the set of these orbitals! that we postulate theirs orthogonality constraints:
 
@@ -876,7 +895,9 @@ Also, the ratio \(\frac{g(x')}{f(x)}\) in our case is evaluated to be \(f(x)\del
 
 </aside>
 
-# 5 Solving KS equation <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+# 5 Solving KS equation 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 In this section we will see how we can solve \(\textbf{KS-equation}\), but first we will write down the matrix formula equivalent to the Schrodinger-like equation; using the **Planewave expansion**. Without further ado, we start by defining our wavefunction (i.e: the \(\textbf{KS-orbitals}\)) as following:
 
@@ -886,7 +907,7 @@ In this section we will see how we can solve \(\textbf{KS-equation}\), but first
 \end{gather*}
 \]
 
-Where, \(\Omega\) is the volume of the real space where we are working in, and \(c\_{i,q}\) are the Fourier coefficients of the wavefunction. Note, that we are moving to the reciprocal space \({\overrightarrow{q}}\) instead of the real one, which will make \(\textbf{Fourier transform}\) the pillars of this work! For our Hamiltonian that is described by \(\textbf{KS}\) equation will be rewritten as follwing:
+Where, \(\Omega\) is the volume of the real space where we are working in, and \(c_{i,q}\) are the Fourier coefficients of the wavefunction. Note, that we are moving to the reciprocal space \({\overrightarrow{q}}\) instead of the real one, which will make \(\textbf{Fourier transform}\) the pillars of this work! For our Hamiltonian that is described by \(\textbf{KS}\) equation will be rewritten as follwing:
 
 \[
 \begin{gather*}
@@ -894,7 +915,7 @@ Where, \(\Omega\) is the volume of the real space where we are working in, and \
 \end{gather*}
 \]
 
-Where, \(\hat{T}_{s}\) is the single-particle kinetic energy and \(\hat{V}_{eff}\). Where \(\hat{V}_{eff} = \hat{\Theta} + \hat{V}_{xc}\). Is the effective potential which contains the external, \(\textbf{Hartree}\) (i.e: \(\hat{\Theta}\)) and \(\textbf{exchange-correlation}\) (i.e: \(\hat{V}\_{xc}\)) parts. So far we can write the wavefunction in the basis set of \(\{\overrightarrow{q}\}\) as following:
+Where, \(\hat{T}_{s}\) is the single-particle kinetic energy and \(\hat{V}_{eff}\). Where \(\hat{V}_{eff} = \hat{\Theta} + \hat{V}_{xc}\). Is the effective potential which contains the external, \(\textbf{Hartree}\) (i.e: \(\hat{\Theta}\)) and \(\textbf{exchange-correlation}\) (i.e: \(\hat{V}_{xc}\)) parts. So far we can write the wavefunction in the basis set of \(\{\overrightarrow{q}\}\) as following:
 
 \[
 \begin{gather*}
@@ -902,12 +923,12 @@ Where, \(\hat{T}_{s}\) is the single-particle kinetic energy and \(\hat{V}_{eff}
 \end{gather*}
 \]
 
-Now to get the eigenvalues \(\varepsilon_i\) we take the evaluate the following product:
+Now to get the eigenvalues \(\varepsilon_i\) we evaluate the following product:
 
 \[
 \begin{gather*}
 \bra{\overrightarrow{q'}}\hat{H}_{KS}\varphi_i(r) = \bra{\overrightarrow{q'}}\Big[\hat{T}_{S} + \hat{V}_{eff}\Big]\varphi_i(r)\\
-\frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\bra{\overrightarrow{q'}}\hat{H}_{KS} \ket{\overrightarrow{q}} = \frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\varepsilon_i\underbrace{\bra{\overrightarrow{q'}}\ket{\overrightarrow{q}} }_{\delta_{q';q}}
+\frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\bra{\overrightarrow{q'}}\hat{H}_{KS} \ket{\overrightarrow{q}} = \frac{1}{\sqrt{\Omega} }\sum_{\overrightarrow{q}} c_{i,q}\varepsilon_i\underbrace{\langle\overrightarrow{q'}|\overrightarrow{q}\rangle}_{\delta_{q';q}}
 \end{gather*}
 \]
 
@@ -933,7 +954,7 @@ the wavevectors in the reciprocal space of the crystal:
 \[
 \begin{gather*}
 V_{eff}(\overrightarrow{r})= \sum_n \bar{V}_{eff}(\overrightarrow{G}_n)e^{j\overrightarrow{G}_n\cdot\overrightarrow{r}}\\
-\text{Where:\ } \bar{V}_{eff}(\overrightarrow{G}_n) = \frac{1}{\Omega_{cell}}\int_{\Omega_{cell}}V_{eff}(\overrightarrow{r})e^{j\overrightarrow{G}_n \cdot\overrightarrow{r}}d\overrightarrow{r}
+\text{Where:\ } \bar{V}_{eff}(\overrightarrow{G}_n) = \frac{1}{\Omega_{cell}}\int_{\Omega_{cell}}V_{eff}(\overrightarrow{r})e^{-j\overrightarrow{G}_n \cdot\overrightarrow{r}}d\overrightarrow{r}
 \end{gather*}
 \]
 
@@ -941,11 +962,11 @@ Performing the same product as previously gives:
 
 \[
 \begin{gather*}
-\bra{\overrightarrow{q'}}\hat{V}_{eff}\ket{\overrightarrow{q}}=\sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \bra{\overrightarrow{q'}}\ket{\overrightarrow{G}_n+\overrightarrow{q}}= \sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \delta_{||\overrightarrow{q'}-\overrightarrow{q}||;\overrightarrow{G}_n }
+\bra{\overrightarrow{q'}}\hat{V}_{eff}\ket{\overrightarrow{q}}=\sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \langle\overrightarrow{q'}|\overrightarrow{G}_n+\overrightarrow{q}\rangle= \sum_n \bar{V}_{eff}(\overrightarrow{G}_n) \delta_{||\overrightarrow{q'}-\overrightarrow{q}||;\overrightarrow{G}_n }
 \end{gather*}
 \]
 
-By make use of the change in variable, by make \(\overrightarrow{q} = \overrightarrow{k}+\overrightarrow{G}_m\) and \(\overrightarrow{q'} = \overrightarrow{k}+\overrightarrow{G}_m'\), so the wave vectors (\(q\ \&\ q'\)) differ by a reciprocal lattice vector. which brings the Schrodinger-like equation to the \(k\) space:
+By make use of the change in variable, by make \(\overrightarrow{q} = \overrightarrow{k}+\overrightarrow{G}_m\) and \(\overrightarrow{q'} = \overrightarrow{k}+\overrightarrow{G}_m'\), so the wave vectors (\(q\ \&\ q'\)) differ by a reciprocal lattice vector. which brings the Schrodinger-equation like to the \(k\) space:
 
 \[
 \begin{gather*}
@@ -955,7 +976,9 @@ By make use of the change in variable, by make \(\overrightarrow{q} = \overright
 
 In summary, we reduced the problem into the First \(\textbf{Brillouin zone}\) (The primitive cell in the reciprocal space), thanks to \(\textbf{Bloch's theorem}\). Now it is important to see how the \(V_{eff}\) can be written in the \textbf{Fourier Space}. For the sake of notation we denote \(n(\overrightarrow{r})\) the real electron density and \(\rho(\overrightarrow{G})\) it conjugate in the reciprocal space.
 
-## 5.1 The electron-electron interaction (Hartee Energy term) <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 5.1 The electron-electron interaction (Hartee Energy term) 
+
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
 
 We use the same definition of the planewave expension for the electron density:
 
@@ -969,7 +992,7 @@ We write : \(\overrightarrow{u} = \overrightarrow{r}-\overrightarrow{r'} \longle
 
 \[
 \begin{align*}
-\frac{1}{2}\sum\_{\overrightarrow{G'}, \overrightarrow{G}}\iint d\overrightarrow{u}d\overrightarrow{r'} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{u}||}e^{j\overrightarrow{G}\cdot\overrightarrow{u}}e^{j\overrightarrow{r'}\cdot\Big(\overrightarrow{G'}+\overrightarrow{G}\Big)}
+\frac{1}{2}\sum_{\overrightarrow{G'}, \overrightarrow{G}}\iint d\overrightarrow{u}d\overrightarrow{r'} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{u}||}e^{j\overrightarrow{G}\cdot\overrightarrow{u}}e^{j\overrightarrow{r'}\cdot\Big(\overrightarrow{G'}+\overrightarrow{G}\Big)}
 \end{align*}
 \]
 
@@ -993,11 +1016,11 @@ The last integral factor it is not a proper integral!
 \end{equation*}
 \]
 
-Rigorously the limit does not exist (not unique a.k.a \(\lim\_{x\longrightarrow a} f(x) \neq f(a) \))!
+Rigorously the limit does not exist (not unique a.k.a \(\lim_{x\longrightarrow a} f(x) \neq f(a) \))!
 
 \[
 \begin{align*}
-\iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} =4\pi\Omega_{cell}\sum\_{\overrightarrow{G'}, \overrightarrow{G}} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{G}||^2}\times \delta(\overrightarrow{G'}-\overrightarrow{G})
+\iint v_{e-e}(\overrightarrow{r'}, \overrightarrow{r})n(\overrightarrow{r})n(\overrightarrow{r'})d\overrightarrow{r}d\overrightarrow{r'} =4\pi\Omega_{cell}\sum_{\overrightarrow{G'}, \overrightarrow{G}} \frac{\rho(\overrightarrow{G'})\rho(\overrightarrow{G})}{||\overrightarrow{G}||^2}\times \delta(\overrightarrow{G'}-\overrightarrow{G})
 \end{align*}
 \]
 
@@ -1027,26 +1050,33 @@ And we ends up by having:
 
 \[
 \begin{gather*}
-\int v_{e-n}(\overrightarrow{r})n(\overrightarrow{r})d\overrightarrow{r} = - 4\pi\sum_{\overrightarrow{G}}\frac{\rho(\overrightarrow{G})}{||\overrightarrow{u}||^2} e^{j\overrightarrow{G}\cdot\overrightarrow{R}}
+\int v_{e-n}(\overrightarrow{r})n(\overrightarrow{r})d\overrightarrow{r} = - 4\pi\sum_{\overrightarrow{G}}\frac{\rho(\overrightarrow{G})}{||\overrightarrow{G}||^2} e^{j\overrightarrow{G}\cdot\overrightarrow{R}}
 \end{gather*}
 \]
 
-## 5.3 The exchange-correlation term <a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+## 5.3 The exchange-correlation term 
 
-As we have seen before that the last contribution of the effective potential in \(\textbf{KS}\) Hamiltonian is due to the change of _exchange-correlation_ energy function over a small variation in the electron density (i.e: \(V\_{xc}(\overrightarrow{r}) = \frac{\delta E[n(\overrightarrow{r})]}{\delta n(\overrightarrow{r})}\)). We will use the expression given by <sup><b>3</b></sup> for the later term, and since we can exchange the derivation of a function over the integral like the case with regular functions, note that we could derive firts and perform the Fourier decomposition, and we ends up by having two terms:
+<a href="#toppage" style="float:right;text-align:right;font-weight:normal;font-size:1.5rem">Go to TOC</a>
+
+As we have seen before that the last contribution of the effective potential in \(\textbf{KS}\) Hamiltonian is due to the change of _exchange-correlation_ energy function over a small variation in the electron density (i.e: \(V_{xc}(\overrightarrow{r}) = \frac{\delta E[n(\overrightarrow{r})]}{\delta n(\overrightarrow{r})}\)). We will use the expression given by Walter Kohn et *al*. <sup><b>3</b></sup> for the later term, and since we can exchange the derivation of a function over the integral like the case with regular functions, note that we could derive first and perform the Fourier decomposition, and we ends up by having two terms:
 
 \[
 \begin{align*}
-    V*{xc}(\overrightarrow{r}) &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[ \int d\overrightarrow{r} \rho(\overrightarrow{r})\bar{\varepsilon}_{xc}[n(\overrightarrow{r})] \Big]\\
+    V_{xc}(\overrightarrow{r}) &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[ \int d\overrightarrow{r} \rho(\overrightarrow{r})\bar{\varepsilon}_{xc}[n(\overrightarrow{r})] \Big]\\
     &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \int d\overrightarrow{r} \rho(\overrightarrow{G})e^{j\overrightarrow{G}\cdot\overrightarrow{r}}\bar{\varepsilon}_{xc}(\overrightarrow{G'})e^{j\overrightarrow{G'}\cdot\overrightarrow{r}} \Big]\\
-    &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}*{xc}(\overrightarrow{G'}) \int e^{j(\overrightarrow{G}+\overrightarrow{G'})\cdot\overrightarrow{r}}d\overrightarrow{r}\Big]\\
-    &= \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}*{xc}(\overrightarrow{G'}) \times \delta(\overrightarrow{G}-\overrightarrow{G'})\Big] = \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G}} \rho(\overrightarrow{G})\bar{\varepsilon}_{xc}(\overrightarrow{G}) \Big]
+    &= \frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}_{xc}(\overrightarrow{G'}) \int e^{j(\overrightarrow{G}+\overrightarrow{G'})\cdot\overrightarrow{r}}d\overrightarrow{r}\Big]\\
+    &= \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G},\overrightarrow{G'}} \rho(\overrightarrow{G})\bar{\varepsilon}_{xc}(\overrightarrow{G'}) \times \delta(\overrightarrow{G}-\overrightarrow{G'})\Big] = \Omega_{cell}\frac{\delta }{\delta n(\overrightarrow{r})} \Big[\sum_{\overrightarrow{G}} \rho(\overrightarrow{G})\bar{\varepsilon}_{xc}(\overrightarrow{G}) \Big]
 \end{align*}
 \]
 
 <sup><b>3</b></sup> [Walter Kohn and Lu Jeu Sham. Self-consistent equations including exchange and correlation effects. Physical review, 140(4A):A1133, 1965](https://doi.org/10.1103/PhysRev.140.A1133)
 
 
-At this stage we shall say that we manage to perform **Bottom-up synthesis of Density Functional Theory(DFT)**.
+At this stage we shall say that we manage to perform **Bottom-up synthesis of Density Functional Theory (DFT)**.
 
-Thank you for reaching this points.
+
+<details><summary><it>Thank you for reaching this points.</it></summary>
+
+![wordcloud](/images/blogs/DFT_BottomUP/wordcloud.png)
+
+</details>

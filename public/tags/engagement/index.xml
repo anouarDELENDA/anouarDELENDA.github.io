@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engagement on A.K.A λ</title>
+    <link>http://localhost:1313/tags/engagement/</link>
+    <description>Recent content in Engagement on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Sun, 12 Apr 2026 23:29:06 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/engagement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LearnPlatform COVID-19 Impact on Digital Learning</title>
+      <link>http://localhost:1313/projects/dacovid19/</link>
+      <pubDate>Sun, 12 Apr 2026 23:29:06 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/projects/dacovid19/</guid>
+      <description>&lt;h1 id=&#34;learnplatform-covid-19-impact-on-digital-learning&#34;&gt;LearnPlatform COVID-19 Impact on Digital Learning&lt;/h1&gt;&#xA;&lt;p&gt;This was a Data Analysis challenge in Kaggle platform, during the the COVID pendamic. Where the challenge was to explore (1) the state of digital learning in 2020 and (2) how the engagement of digital learning relates to factors such as district demographics, broadband access, and state/national level policies and events.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.kaggle.com/competitions/learnplatform-covid19-impact-on-digital-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;Problem Statement:&lt;/strong&gt;&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;The COVID-19 Pandemic has disrupted learning for more than 56 million students in the United States. In the Spring of 2020, most states and local governments across the U.S. closed educational institutions to stop the spread of the virus. In response, schools and teachers have attempted to reach students remotely through distance learning tools and digital platforms. Until today, concerns of the exacaberting digital divide and long-term learning loss among America’s most vulnerable learners continue to grow.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

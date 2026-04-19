@@ -13,10 +13,10 @@
     <atom:link href="http://localhost:1313/tags/linear-tetrahedron-method/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LTM</title>
-      <link>http://localhost:1313/portfolio/projects/ltm/</link>
+      <link>http://localhost:1313/projects/ltm/</link>
       <pubDate>Sun, 12 Apr 2026 23:28:55 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
-      <guid>http://localhost:1313/portfolio/projects/ltm/</guid>
-      <description>&lt;h1 id=&#34;linear-tetrahedron-method&#34;&gt;linear tetrahedron method&lt;/h1&gt;</description>
+      <guid>http://localhost:1313/projects/ltm/</guid>
+      <description>&lt;h1 id=&#34;linearlinear-tetrahedron-method-for-electronic-density-calculations&#34;&gt;linearLinear tetrahedron method for electronic density calculations&lt;/h1&gt;&#xA;&lt;p&gt;This Projects aim to reproduce the results of  &lt;a href=&#34;https://doi.org/10.1016/0038-1098%2875%2990054-X&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chadi and Cohen&lt;/a&gt;&#xA; about the density of state (DOS). For this The Linear Tetrahedron Method were used. Here we just showed up the code, the provided data (Mesh grid of reciprocal space) are not shown. For this we took some basic example of the Germanium with the same fitted parameters from the &lt;a href=&#34;https://doi.org/10.1016/0038-1098%2875%2990054-X&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;previous papers&lt;/a&gt;&#xA; for the Tight Binding approach.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

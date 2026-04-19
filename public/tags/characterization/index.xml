@@ -13,10 +13,10 @@
     <atom:link href="http://localhost:1313/tags/characterization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FASTPtyco</title>
-      <link>http://localhost:1313/portfolio/projects/fastptyco/</link>
+      <link>http://localhost:1313/projects/fastptyco/</link>
       <pubDate>Sun, 12 Apr 2026 23:29:31 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
-      <guid>http://localhost:1313/portfolio/projects/fastptyco/</guid>
-      <description>&lt;h1 id=&#34;ultrafast-ptychography&#34;&gt;Ultrafast Ptychography&lt;/h1&gt;&#xA;&lt;p style=&#34;text-align:justify;&#34;&gt;&#xA;The Ptychography is a microscopy tool to investigate the crystal structure, this idea started in the lately sixties (1969) by Walter Hoppe. And by the growth of the computational power it start to gain more attention in 1982. The main concept addressed by this method is to reconstruct a crystal structure. Emerging the Ptychography into spectroscopy can be done by changing the problem from spatial-reciprocal space representation to time-frequency description. &lt;/p&gt;</description>
+      <guid>http://localhost:1313/projects/fastptyco/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;&#xA;&lt;p&gt;The Ptychography is a microscopy tool to investigate the crystal structure, this idea started in the lately sixties (1969) by Walter Hoppe. And by the growth of the computational power it start to gain more attention in 1982. The main concept addressed by this method is to reconstruct a crystal structure. Emerging the Ptychography into spectroscopy can be done by changing the problem from spatial-reciprocal space representation to time-frequency description.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

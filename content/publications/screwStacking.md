@@ -5,6 +5,8 @@ title = 'Influence of screw dislocations on stacking order in graphite'
 tags = ["Screw dislocation","Graphite","AB graphite","ABC graphite","Stacking","Bernal", "Rhombohedral graphite","Graphitisation"]
 categories = ['Publications']
 weight = 2
+showReadingTime= true
+showAuthor= true
 +++
 
 # Influence of screw dislocations on stacking order in graphite

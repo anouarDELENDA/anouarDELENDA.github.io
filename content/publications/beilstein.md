@@ -5,6 +5,8 @@ title = 'Beilstein: Defects and defect-mediated engineering of two-dimensional m
 categories = ['Publications']
 tags = ["2D materials", "defects", "electron irradiation", "ion bombardment"]
 weight = 1
+showReadingTime= true
+showAuthor= true
 +++
 
 <center><img src="/images/publications/beilstein_TOC.png" width="600" /></center>

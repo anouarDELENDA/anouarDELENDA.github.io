@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on A.K.A λ</title>
+    <link>http://localhost:1313/tags/projects/</link>
+    <description>Recent content in Projects on A.K.A λ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Anouar Akacha Delenda)</managingEditor>
+    <webMaster>user@example.com (Anouar Akacha Delenda)</webMaster>
+    <copyright>Anouar Akacha DELENDA</copyright>
+    <lastBuildDate>Sun, 19 Apr 2026 22:06:33 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/portfolio/projects/</link>
+      <pubDate>Sun, 19 Apr 2026 22:06:33 +0200</pubDate><author>user@example.com (Anouar Akacha Delenda)</author>
+      <guid>http://localhost:1313/portfolio/projects/</guid>
+      <description>&lt;h2 id=&#34;model-selection-for-atomization-energy-prediction&#34;&gt;&lt;a href=&#34;http://localhost:1313/projects/mlatomseng&#34;&gt;Model Selection for Atomization Energy Prediction&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/projects/mlatomseng&#34;&gt;&lt;center&gt;&lt;img src=&#34;http://localhost:1313/images/projects/model_selection.png&#34; width=&#34;300&#34; height=&#34;300&#34;&gt;&lt;/center&gt;&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ultrafast-ptychography&#34;&gt;&lt;a href=&#34;http://localhost:1313/projects/fastptyco&#34;&gt;Ultrafast Ptychography&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;center&gt;&lt;img src=&#34;http://localhost:1313/images/projects/ptycho.png&#34; width=&#34;300&#34; height=&#34;300&#34;&gt;&lt;/center&gt;&#xA;&lt;h2 id=&#34;linear-tetrahedron-method-for-electronic-density-calculations&#34;&gt;&lt;a href=&#34;http://localhost:1313/projects/ltm&#34;&gt;Linear tetrahedron method for electronic density calculations&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/projects/ltm&#34;&gt;&lt;center&gt;&lt;img src=&#34;http://localhost:1313/images/projects/DOS.png&#34; width=&#34;300&#34; height=&#34;300&#34;&gt;&lt;/center&gt;&lt;/a&gt;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;learnplatform-covid-19-impact-on-digital-learning&#34;&gt;&lt;a href=&#34;http://localhost:1313/projects/dacovid19&#34;&gt;LearnPlatform COVID-19 Impact on Digital Learning&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/projects/dacovid19&#34;&gt;&lt;center&gt;&lt;img src=&#34;http://localhost:1313/images/projects/covid_19.png&#34; width=&#34;300&#34; height=&#34;300&#34;&gt;&lt;/center&gt;&lt;/a&gt;&#xA;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

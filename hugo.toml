@@ -39,9 +39,11 @@ enableRobotsTXT = true
 [params]
   # flat hey are allways first !
   math = true
-
-  showAuthor = true    
-  description = "A short bio shown on the home page"
+  showCover = true
+  showAuthor= true
+  comments = false
+  description = "A.K.A λ | Personal Website"
+  Subtitle = "Personal Website"
 
   [params.header]
     logo  = "/images/logo.png"
@@ -108,10 +110,10 @@ enableRobotsTXT = true
     link    = "https://www.researchgate.net/profile/Anouar-Akacha-Delenda-2?ev=hdr_xprf"
 
 [taxonomies]
-  category = "categories"
   tag = "tags"
+  category = "categories"
+
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
-
