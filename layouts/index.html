@@ -6,156 +6,130 @@ defined here */}}
   main {
     align-items: stretch;
   }
+
   .layout {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    width: 100vw;
-    height: 80vh;
-    /*min-height: 80vh;*/
-    align-self: stretch;
+    justify-content: center;
+    gap: clamp(2rem, 5vw, 6rem);
+    width: 100%;
+    min-height: calc(100vh - 120px); /* avoids footer overlap in Firefox */
+    padding: 4vh 10vw;
+    box-sizing: border-box;
   }
+
+  /* ── Bio (left) ─────────────────────────────── */
   .description-holder {
-    position: absolute;
-    top: 20%;
-    left: 18vw;
-    transform: translateY(50%);
-    width: clamp(
-      350px,
-      40%,
-      600px
-    ); /* min percentage of the fill and the max*/
-    height: auto;
-    /* allow content to grow */
-    border-radius: none;
-    overflow: visible;
-    /* allow typing animation overflow */
-    background-color: none;
+    flex: 1 1 0;
+    min-width: 0;          /* crucial: prevents flex blowout */
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .description-content {
     -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 75%,
-      transparent 100%
+      to bottom, black 0%, black 75%, transparent 100%
     );
     mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 75%,
-      transparent 100%
+      to bottom, black 0%, black 75%, transparent 100%
     );
-    /*transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;*/
-    margin-left: 0;
-    /* push to left */
-    padding-bottom: 5%;
+    padding-bottom: 1.5rem;
   }
 
-  /*next btn*/
-  .next-button {
-    margin-top: 1.5vh;
-    padding: clamp(0.5vh, 1vh, 1.5vh) clamp(1vw, 2vw, 3vw);
-    /*border: none;*/
-    border-radius: 40px;
-    background-color: #007bff;
-    color: white;
-    font-size: clamp(18px, 50%, 25px);
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease-in-out, transform 0.4s ease-in-out,
-      opacity 0.4s ease-in-out;
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    /* add to center the text inside <a> */
-    text-decoration: none;
-  }
-
-  .next-button:hover {
-    background-color: #0056b3;
-  }
-
-  /* Profile picture */
+  /* ── Profile picture (right) ────────────────── */
   .circular-image-holder {
-    position: absolute;
-    top: 50%;
-    right: 18vw;
-    transform: translateY(-50%);
-    width: clamp(120px, 20vw, 400px);
-    height: clamp(120px, 20vw, 400px);
+    flex: 0 0 auto;
+    width: clamp(160px, 22vw, 380px);
+    height: clamp(160px, 22vw, 380px);
     border-radius: 50%;
     overflow: hidden;
-    display: flex;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     background-color: #fff;
     line-height: 0;
-    /* Remove any line-height affecting image */
   }
 
   .circular-image-holder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.25s ease-in-out;
+    display: block;       /* removes 4px ghost gap in Firefox */
   }
 
   .circular-image-holder img:hover {
-    transform: scale(1.13);
+    transform: scale(1.08);
   }
 
-  /*screen scalling issue*/
-  @media (max-width: 1114px) {
+  /* ── CTA button ─────────────────────────────── */
+  .next-button {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.6em 1.8em;
+    border-radius: 40px;
+    background-color: #007bff;
+    color: white;
+    font-size: clamp(15px, 1.2vw, 20px);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out;
+  }
+
+  .next-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+
+  /* ── Typing effect ──────────────────────────── */
+  @keyframes typing {
+    from { width: 0; }
+    to   { width: 24ch; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  .typing-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    max-width: 24ch;
+    border-right: 2px solid currentColor;
+    animation:
+      typing 3s steps(24, end) forwards,
+      blink  0.75s step-end infinite;
+    color: #1e293b;
+  }
+  .dark .typing-effect { color: #e2e8f0; }
+
+  /* ── Tablet / mobile ────────────────────────── */
+  @media (max-width: 768px) {
     .layout {
-      flex-direction: column;
-      gap: 5px;
+      flex-direction: column;  /* image first (top), bio below */
+      justify-content: flex-start;
+      min-height: unset;
+      padding: 5vh 6vw 8vh;
+      gap: 2rem;
     }
+
     .circular-image-holder {
-      position: relative !important;
-      top: 30vh !important;
-      right: auto !important;
-      margin-bottom: 0 !important;
-      margin: 0 auto 1vh auto;
-      width: clamp(120px, 40vw, 200px);
-      height: clamp(120px, 40vw, 200px);
+      width: clamp(120px, 45vw, 220px);
+      height: clamp(120px, 45vw, 220px);
     }
 
     .description-holder {
-      position: relative !important;
-      top: 0vh !important;
-      left: auto !important;
-      width: 90vw;
-      max-width: 400px;
-      padding: 0 !important;
+      max-width: 100%;
+      align-items: center;
+      text-align: center;
     }
-  }
-  /* typing effect */
-  @keyframes typing {
-    from {
-      width: 0;
+
+    .description-content {
+      text-align: justify;
     }
-    to {
-      width: 100%;
-    }
-  }
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
-  .typing-effect {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid currentColor; /* ← follows text color */
-    animation: typing 3s steps(24, end), blink 0.75s step-end infinite;
-    display: inline-block;
-    width: 24ch;
-    color: #1e293b; /* slate-800 — light mode */
-  }
-  .dark .typing-effect {
-    color: #e2e8f0; /* slate-200 — dark mode */
   }
 </style>
 

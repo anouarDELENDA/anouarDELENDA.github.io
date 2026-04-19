@@ -1,4 +1,4 @@
-baseURL = 'http://https://github.com/anouarDELENDA/anouarDELENDA.github.io/'
+baseURL = 'https://github.com/anouarDELENDA/anouarDELENDA.github.io/'
 title = "A.K.A λ"
 copyright = "Anouar Akacha DELENDA"
 theme = "tailwind"
